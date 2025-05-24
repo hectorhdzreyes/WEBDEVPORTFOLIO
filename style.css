@@ -2643,58 +2643,58 @@ nav ul li a {
 
     /* --- General Body/Container Adjustments for Mobile --- */
     body {
-        padding-top: 5rem; /* Add padding to body to make space for fixed/absolute header/nav */
-        position: relative; /* For absolute positioning children like availability if needed */
+        padding-top: 4.5rem; /* Adjusted for potentially slimmer fixed header */
+        position: relative; 
     }
-    .container { /* This is the main page container, not .hero .container */
-        padding: 0 1rem; /* Reduced padding for mobile */
+    .container { 
+        padding: 0 1rem; 
         width: 100%;
         box-sizing: border-box;
     }
 
-    /* --- Header (Top Left) & Nav (Top Right) --- */
-    header { /* The main <header> tag */
-        position: fixed; /* Fixed position at the top */
+    /* --- Header (Top Left) & Nav (Top Right) - Target: byhuy.com example --- */
+    header { /* The main <header> tag - Fixed Bar */
+        position: fixed; 
         top: 0;
         left: 0;
         width: 100%;
-        display: flex; /* Use flex to position .header and .nav within it */
-        justify-content: space-between; /* Pushes .header left, .nav right */
-        align-items: flex-start; /* Align items to the top of the header */
-        padding: 0.75rem 1rem; /* Padding for the header bar */
-        background-color: #fff; /* Add a background to prevent content overlap */
-        z-index: 1000; /* High z-index */
+        display: flex; 
+        justify-content: space-between; 
+        align-items: flex-start; 
+        padding: 0.75rem 1.25rem; /* Match target padding */
+        background-color: #f8f8f7; /* Match target background (light beige/off-white) */
+        z-index: 1000; 
         box-sizing: border-box;
-        border-bottom: 1px solid #eee; /* Optional separator */
+        /* border-bottom: 1px solid #e0e0e0; */ /* Target has no visible border */
     }
     header .header { /* Your .header div for name/major */
-        position: static; /* Reset from previous attempt */
+        position: static; 
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         padding: 0;
     }
-    header .headerLeft,
-    header .headerRight {
-        position: static; 
-        text-align: left;
-        margin-left: 0;
-        font-size: 0.8rem; 
-    }
-    header .headerLeft {
+    header .headerLeft { /* e.g., "By Huy®" */
+        font-size: 0.9rem; /* Slightly larger */
         font-weight: 600; 
-        margin-bottom: 0.15rem; 
+        color: #000; /* Black text */
+        margin-bottom: 0.1rem; 
     }
-    header .headerRight {
+    header .headerLeft::after { /* For the ® symbol if you add it like target */
+        content: "®";
+        font-size: 0.6em;
+        vertical-align: super;
+        margin-left: 1px;
+        font-weight: normal; /* Lighter than main name */
+        display: inline-block; /* Default, ensure it's there */
+    }
+    header .headerRight { /* e.g., "(Web Designer & Developer)" */
         font-size: 0.7rem; 
-        color: #555;
-    }
-    header .headerLeft::after { 
-        display: none;
+        color: #555; /* Dark grey */
     }
 
-    .hero .nav { /* Navigation in the hero section */
-        position: static; /* Reset from previous attempt */
+    .hero .nav { /* Navigation in the hero section, now part of fixed header */
+        position: static; 
         padding: 0;
     }
     .hero .nav ul {
@@ -2705,132 +2705,149 @@ nav ul li a {
         align-items: flex-end; 
     }
     .hero .nav ul li {
-        line-height: 1.6; 
+        line-height: 1.5; /* Tighter line height */
         text-align: right;
     }
     .hero .nav ul li a {
-        font-size: 0.9rem; 
+        font-size: 0.85rem; /* Slightly smaller */
         font-weight: 500;
         color: #333; 
-        padding: 0.1rem 0; 
+        padding: 0.05rem 0; /* Minimal vertical padding */
         text-decoration: none;
     }
 
     /* --- Hero Section Content Flow --- */
     .hero {
-        padding: 1rem; /* Padding for the hero section itself */
-        margin-top: 0; /* Reset margin-top if body has padding */
+        padding: 1.5rem; /* Overall padding for hero content area */
+        margin-top: 0; 
         display: flex;
         flex-direction: column;
-        align-items: center; /* Center items like name, image block */
+        align-items: flex-start; /* Align children (name, tagline, button) to the left */
     }
 
-    /* 3. Main Name */
+    /* Main Name Block - Target: HUY NGUYEN© */
     .hero .name {
-        font-size: 2.8rem; 
+        font-size: 2.8rem; /* Adjust as needed */
+        font-weight: 700; /* Bold */
+        color: #000; /* Black text */
         letter-spacing: -0.5px;
-        line-height: 1.15;
-        text-align: center;
-        margin: 1rem auto 1.5rem auto; 
-        padding: 0 0.5rem; 
-        position: static; 
-        width: 100%;
-        order: 1; /* First item in hero flow */
-    }
-    .hero .name .reyes {
-        letter-spacing: 0.05rem; 
-    }
-    .hero .name::after { 
-        font-size: 0.9rem;
-        position: static; 
-        display: block; 
-        text-align: center;
-        margin-top: 0.4rem;
-    }
-
-    /* --- Content Wrapper (now just for tagline, button, image) --- */
-    .hero .content-wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start; /* Align left items to the start */
-        padding: 0;
-        width: 100%;
-        max-width: 400px; /* Constrain width of this block for better centering */
-        margin: 0 auto; /* Center this block */
-        order: 2; /* Second item in hero flow */
-    }
-    .hero .content-left, 
-    .hero .content-center, 
-    .hero .content-right { /* Reset for these children of content-wrapper */
-        max-width: 100%;
-        width: 100%;
-        margin-bottom: 1.5rem; 
-        position: static;
+        line-height: 1.1;
+        text-align: left;
+        margin: 1rem 0 1.5rem 0; /* Top, 0 R/L, Bottom */
         padding: 0; 
-        order: 0; /* Reset order for children */
+        position: static; 
+        width: auto; /* Not full width, let content define it */
+        order: 1;
+    }
+    .hero .name .reyes { /* If you have a separate class for REYES */
+        letter-spacing: -0.5px; /* Match main name */
+    }
+    .hero .name::after { /* Copyright symbol styling */
+        content: "©"; /* Ensure you have this if you want it */
+        font-size: 0.8em; /* Relative to main name size */
+        font-weight: normal; /* Lighter */
+        vertical-align: baseline; /* Adjust as needed */
+        margin-left: 0.2em;
+        display: inline; /* To be on the same line */
+        /* Remove block, text-align, margin-top from previous version */
     }
 
-    /* 4. Tagline Block (Arrow & Text) - inside .content-left */
-    .hero .content-left { 
-        text-align: left; 
+    /* Tagline - Target: "I help growing brands..." */
+    .hero .content-wrapper { /* This wrapper will now just be for tagline, then button, then image+availability */
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-start; 
+        width: 100%; 
+        order: 2; 
+        padding: 0; /* Reset padding */
+        margin: 0; /* Reset margin */
+        max-width: none; /* Reset from previous */
     }
-    .hero .arrow {
-        font-size: 1.1rem;
-        margin-bottom: 0.25rem; 
-        position: static; 
-        display: block; /* Arrow on its own line */
+    .hero .content-left { /* Contains tagline and button */
+        order: 1; 
+        width:100%;
+    }
+    .hero .arrow { /* Hide arrow as per target example */
+        display: none;
     }
     .hero .tagline {
-        font-size: 0.95rem;
-        line-height: 1.4;
-        margin: 0 0 1rem 0; 
+        font-size: 1rem; /* Match target */
+        font-weight: normal; /* Normal weight */
+        line-height: 1.5; /* Match target */
+        color: #333; /* Darker text */
+        margin: 0 0 1.5rem 0; /* Space below tagline */
         text-align: left;
         display: block; 
     }
 
-    /* 5. BOOK A CALL Button - inside .content-left */
+    /* BOOK A CALL Button */
     .hero .cta-button { 
+        font-size: 0.9rem; 
+        font-weight: 500;
+        color: #fff; 
+        background-color: #000; /* Black background */
         padding: 0.8rem 1.2rem;
-        font-size: 0.9rem;
-        width: auto; 
-        min-width: 160px; 
-        max-width: 100%; /* Allow it to take full width of its left-aligned container if text is long */
-        align-self: flex-start; 
-        margin: 0 0 1.5rem 0; 
+        border-radius: 2rem; /* Keep rounded */
         text-align: center;
+        width: auto; /* Fit content */
+        min-width: auto; /* Reset */
+        max-width: none; /* Reset */
+        align-self: flex-start; 
+        margin: 0 0 2rem 0; /* Space below button */
+        text-decoration: none;
+    }
+    .hero .cta-button .arrow-icon { /* Style the arrow inside this specific button */
+        font-size: 1em; /* Relative to button text */
+        margin-left: 0.5em;
+        display: inline-block;
     }
 
-    /* 6. Profile Image - inside .content-center */
-    .hero .content-center { 
-        text-align: center; 
+    /* --- Profile Image & Availability --- */
+    /* New wrapper for image and availability to sit side-by-side or manage their layout */
+    .hero .image-availability-wrapper {
+        display: flex;
+        flex-direction: row; /* Try to put image and availability in a row */
+        align-items: flex-end; /* Align to bottom */
+        width: 100%;
+        margin-top: 1rem; /* Space above this block */
+        order: 2; /* Comes after content-left (tagline/button) */
+    }
+    .hero .content-center { /* Contains profile image */
+        order: 1; /* Image first in this wrapper */
+        text-align: left; /* Align image to the left */
+        margin-bottom: 0; /* Remove bottom margin as it's in a flex row */
+        flex-shrink: 0; /* Don't let image shrink too much */
     }
     .hero .profile-image {
-        width: 80%; 
-        max-width: 300px; 
-        margin: 0 auto 1.5rem auto; 
-        height: auto; 
+        width: 100px; /* Smaller fixed width like target */
+        height: auto; /* Maintain aspect ratio */
+        max-width: 100px; /* Enforce max width */
+        margin: 0; /* Reset margins, alignment handled by parent */
+        border-radius: 4px; /* Slight radius like target */
     }
 
-    /* 7. Availability - inside .content-right, now part of normal flow */
-    .hero .content-right {
-        text-align: center; /* Center for mobile, or right if preferred */
-        margin-top: 1rem; /* Add some space above it */
-        order: 3; /* After image */
+    .hero .content-right { /* Contains availability */
+        order: 2; /* Availability second */
+        text-align: right; /* Text align right */
+        margin-bottom: 0; /* Remove bottom margin */
+        margin-left: auto; /* Push to the right */
+        padding-left: 1rem; /* Space from image */
     }
     .hero .availability {
-        text-align: inherit; /* Inherit from .content-right */
+        text-align: right;
         padding: 0;
         margin-top: 0;
     }
     .hero .availability-text {
-        font-size: 0.75rem;
+        font-size: 0.7rem; 
+        color: #555;
+        line-height: 1.3;
     }
     .hero .availability-date {
-        font-size: 1.6rem; 
-        line-height: 1.2;
+        font-size: 1.5rem; 
+        font-weight: 600; /* Bolder date */
+        color: #000; /* Black date text */
+        line-height: 1.1;
     }
 
 }
