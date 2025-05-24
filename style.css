@@ -2642,181 +2642,194 @@ nav ul li a {
 @media (max-width: 768px) {
 
     /* --- General Body/Container Adjustments for Mobile --- */
-    .container {
-        padding: 0.5rem 1rem; /* Reduced padding for mobile */
+    body {
+        padding-top: 5rem; /* Add padding to body to make space for fixed/absolute header/nav */
+        position: relative; /* For absolute positioning children like availability if needed */
+    }
+    .container { /* This is the main page container, not .hero .container */
+        padding: 0 1rem; /* Reduced padding for mobile */
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    /* --- 1. Top Left Corner: Header Info --- */
-    header .header { /* Targets the .header div inside the <header> tag */
+    /* --- Header (Top Left) & Nav (Top Right) --- */
+    header { /* The main <header> tag */
+        position: fixed; /* Fixed position at the top */
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex; /* Use flex to position .header and .nav within it */
+        justify-content: space-between; /* Pushes .header left, .nav right */
+        align-items: flex-start; /* Align items to the top of the header */
+        padding: 0.75rem 1rem; /* Padding for the header bar */
+        background-color: #fff; /* Add a background to prevent content overlap */
+        z-index: 1000; /* High z-index */
+        box-sizing: border-box;
+        border-bottom: 1px solid #eee; /* Optional separator */
+    }
+    header .header { /* Your .header div for name/major */
+        position: static; /* Reset from previous attempt */
         display: flex;
         flex-direction: column;
-        align-items: flex-start; /* Align items to the left */
-        padding: 0.5rem 0; /* Adjust padding as needed */
-        position: absolute; /* Position relative to .container or body */
-        top: 1rem; 
-        left: 1rem;
-        z-index: 20; /* Ensure it's above other content if needed */
+        align-items: flex-start;
+        padding: 0;
     }
     header .headerLeft,
     header .headerRight {
-        position: static; /* Reset desktop positioning */
+        position: static; 
         text-align: left;
         margin-left: 0;
-        font-size: 0.85rem; /* Adjust font size for mobile */
+        font-size: 0.8rem; 
     }
     header .headerLeft {
-        font-weight: 500; /* Keep or adjust weight */
-        margin-bottom: 0.25rem; /* Space between the two lines */
+        font-weight: 600; 
+        margin-bottom: 0.15rem; 
     }
     header .headerRight {
-        font-size: 0.75rem; /* Smaller for the sub-text */
-        color: #4f4f4f; /* Adjust color if needed */
+        font-size: 0.7rem; 
+        color: #555;
     }
-    header .headerLeft::after { /* Hide desktop specific pseudo-element */
+    header .headerLeft::after { 
         display: none;
     }
 
-    /* --- 2. Top Right Corner: Navigation --- */
-    .hero .nav { /* Targets .nav within .hero section */
-        position: absolute;
-        top: 1rem; 
-        right: 1rem;
+    .hero .nav { /* Navigation in the hero section */
+        position: static; /* Reset from previous attempt */
         padding: 0;
-        z-index: 20; /* Ensure it's above other content */
     }
     .hero .nav ul {
-        list-style: none;
         padding: 0;
         margin: 0;
         display: flex;
         flex-direction: column;
-        align-items: flex-end; /* Align text to the right */
+        align-items: flex-end; 
     }
     .hero .nav ul li {
-        line-height: 1.8; /* Adjust line height for closer stacking */
+        line-height: 1.6; 
         text-align: right;
     }
     .hero .nav ul li a {
-        font-size: 1rem; /* Smaller font for mobile nav */
+        font-size: 0.9rem; 
         font-weight: 500;
-        color: #333; /* Ensure good contrast */
-        padding: 0.25rem 0; /* Add some padding for easier tapping */
+        color: #333; 
+        padding: 0.1rem 0; 
         text-decoration: none;
     }
 
-    /* --- 3. Semi-Top Middle Center: Main Name --- */
-    .hero .name {
-        font-size: 3rem; /* Significantly reduced font size */
-        letter-spacing: -1px;
-        line-height: 1.1;
-        text-align: center;
-        margin: 4rem auto 1.5rem auto; /* Adjust top/bottom margin for positioning */
-        padding: 0 0.5rem; /* Add some horizontal padding if it touches edges */
-        position: static; /* Reset relative positioning if not needed */
-        width: 100%;
-    }
-    .hero .name .reyes {
-        letter-spacing: 0.1rem; /* Adjust letter spacing for smaller font */
-    }
-    .hero .name::after { /* Copyright symbol for mobile */
-        font-size: 1rem;
-        position: static; /* Make it flow with the text */
-        display: block; /* Put it on its own line */
-        text-align: center;
-        margin-top: 0.5rem;
-        /* Remove right/top/bottom absolute positioning values */
+    /* --- Hero Section Content Flow --- */
+    .hero {
+        padding: 1rem; /* Padding for the hero section itself */
+        margin-top: 0; /* Reset margin-top if body has padding */
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center items like name, image block */
     }
 
-    /* --- Preparing .content-wrapper for new mobile layout --- */
+    /* 3. Main Name */
+    .hero .name {
+        font-size: 2.8rem; 
+        letter-spacing: -0.5px;
+        line-height: 1.15;
+        text-align: center;
+        margin: 1rem auto 1.5rem auto; 
+        padding: 0 0.5rem; 
+        position: static; 
+        width: 100%;
+        order: 1; /* First item in hero flow */
+    }
+    .hero .name .reyes {
+        letter-spacing: 0.05rem; 
+    }
+    .hero .name::after { 
+        font-size: 0.9rem;
+        position: static; 
+        display: block; 
+        text-align: center;
+        margin-top: 0.4rem;
+    }
+
+    /* --- Content Wrapper (now just for tagline, button, image) --- */
     .hero .content-wrapper {
         display: flex;
         flex-direction: column;
-        align-items: flex-start; /* Default alignment, will be overridden by children if needed */
-        padding: 0 1rem; /* Add some padding to the wrapper */
+        align-items: flex-start; /* Align left items to the start */
+        padding: 0;
         width: 100%;
-        box-sizing: border-box;
+        max-width: 400px; /* Constrain width of this block for better centering */
+        margin: 0 auto; /* Center this block */
+        order: 2; /* Second item in hero flow */
     }
     .hero .content-left, 
     .hero .content-center, 
-    .hero .content-right {
+    .hero .content-right { /* Reset for these children of content-wrapper */
         max-width: 100%;
         width: 100%;
-        margin-bottom: 1.5rem; /* Default spacing between stacked items */
-        position: static; /* Reset any absolute/relative from desktop if not needed */
-        padding: 0; /* Reset padding if any */
+        margin-bottom: 1.5rem; 
+        position: static;
+        padding: 0; 
+        order: 0; /* Reset order for children */
     }
 
-    /* --- 4. Under Name, Left Side: Arrow and Tagline --- */
-    .hero .content-left { /* This will contain arrow, tagline, and cta-button */
-        order: 1; /* Ensure it comes after name but before image */
-        text-align: left; /* Align its content to the left */
+    /* 4. Tagline Block (Arrow & Text) - inside .content-left */
+    .hero .content-left { 
+        text-align: left; 
         display: flex;
         flex-direction: column;
         align-items: flex-start;
     }
     .hero .arrow {
-        font-size: 1.2rem;
-        margin-right: 0.25rem;
-        margin-bottom: 0.25rem; /* Space below arrow */
-        position: static; /* Reset desktop positioning */
-        top: auto; 
-        display: inline-block; /* To sit with tagline start */
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem; 
+        position: static; 
+        display: block; /* Arrow on its own line */
     }
     .hero .tagline {
-        font-size: 1rem;
-        font-weight: 400;
-        line-height: 1.5;
-        margin: 0 0 1rem 0; /* Reset desktop margins, add bottom margin */
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin: 0 0 1rem 0; 
         text-align: left;
-        display: block; /* Ensure it takes its own space */
+        display: block; 
     }
 
-    /* --- 5. Under Tagline, Left Side: BOOK A CALL Button --- */
-    .hero .cta-button { /* The main one in hero */
-        order: 2; /* Comes after tagline in .content-left */
-        padding: 0.75rem 1.25rem;
+    /* 5. BOOK A CALL Button - inside .content-left */
+    .hero .cta-button { 
+        padding: 0.8rem 1.2rem;
         font-size: 0.9rem;
-        width: auto; /* Let content define width initially */
-        min-width: 150px; /* Ensure a decent tap target */
-        max-width: 280px;
-        align-self: flex-start; /* Align to the left */
-        margin: 0 0 1.5rem 0; /* Reset desktop margin, add bottom margin */
+        width: auto; 
+        min-width: 160px; 
+        max-width: 100%; /* Allow it to take full width of its left-aligned container if text is long */
+        align-self: flex-start; 
+        margin: 0 0 1.5rem 0; 
         text-align: center;
     }
 
-    /* --- 6. Under Button: Profile Image --- */
-    .hero .content-center { /* Contains profile image */
-        order: 3; /* After .content-left block */
-        text-align: center; /* Center the image within this block */
+    /* 6. Profile Image - inside .content-center */
+    .hero .content-center { 
+        text-align: center; 
     }
     .hero .profile-image {
-        width: 70%; /* Take up a good portion of width */
-        max-width: 280px; /* Max size for mobile */
-        margin: 0 auto 1.5rem auto; /* Center it, add bottom margin */
-        border-radius: 5px;
-        height: auto; /* Maintain aspect ratio */
+        width: 80%; 
+        max-width: 300px; 
+        margin: 0 auto 1.5rem auto; 
+        height: auto; 
     }
 
-    /* --- 7. Bottom Right Corner: Availability --- */
-    .hero .content-right { /* Contains availability */
-        order: 4; /* Last item in the flow */
-        width: auto; /* Allow it to shrink to content */
-        position: absolute;
-        bottom: 1rem;
-        right: 1rem;
-        z-index: 5; /* Keep it above general flow if needed */
+    /* 7. Availability - inside .content-right, now part of normal flow */
+    .hero .content-right {
+        text-align: center; /* Center for mobile, or right if preferred */
+        margin-top: 1rem; /* Add some space above it */
+        order: 3; /* After image */
     }
     .hero .availability {
-        text-align: right;
-        padding: 0; /* Reset desktop padding */
-        margin-top: 0; /* Reset desktop margin */
+        text-align: inherit; /* Inherit from .content-right */
+        padding: 0;
+        margin-top: 0;
     }
     .hero .availability-text {
-        font-size: 0.7rem;
-        color: #555;
+        font-size: 0.75rem;
     }
     .hero .availability-date {
-        font-size: 1.8rem; /* Reduced font size */
+        font-size: 1.6rem; 
         line-height: 1.2;
     }
 
