@@ -2643,28 +2643,29 @@ nav ul li a {
 
     /* --- General Body/Container Adjustments for Mobile --- */
     body {
-        padding-top: 4.5rem; /* Adjusted for potentially slimmer fixed header */
+        padding-top: 2rem; /* Adjusted for potentially slimmer fixed header */
         position: relative; 
     }
     .container { 
-        padding: 0 1rem; 
+        padding: 1.5rem 1rem; /* Adjusted top padding */
         width: 100%;
         box-sizing: border-box;
     }
 
     /* --- Header (Top Left) & Nav (Top Right) - Target: byhuy.com example --- */
     header { /* The main <header> tag - Fixed Bar */
-        position: fixed; 
+        position: relative; 
         top: 0;
         left: 0;
-        width: 100%;
+        width: 125%;
         display: flex; 
         justify-content: space-between; 
         align-items: flex-start; 
-        padding: 0.75rem 1.25rem; /* Match target padding */
-        background-color: #f8f8f7; /* Match target background (light beige/off-white) */
+        padding: 2.0rem 1.25rem; /* Match target padding */
         z-index: 1000; 
         box-sizing: border-box;
+        padding-top: 0rem;
+        
         /* border-bottom: 1px solid #e0e0e0; */ /* Target has no visible border */
     }
     header .header { /* Your .header div for name/major */
@@ -2672,44 +2673,45 @@ nav ul li a {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        padding: 0;
     }
     header .headerLeft { /* e.g., "By Huy®" */
-        font-size: 0.9rem; /* Slightly larger */
+        font-size: 2.0rem; /* Slightly larger */
         font-weight: 600; 
         color: #000; /* Black text */
         margin-bottom: 0.1rem; 
     }
     header .headerLeft::after { /* For the ® symbol if you add it like target */
         content: "®";
-        font-size: 0.6em;
+        font-size: 2.0rem;
         vertical-align: super;
-        margin-left: 1px;
-        font-weight: normal; /* Lighter than main name */
+        margin-right: -.5rem!important;
+        font-weight: 500; /* Lighter than main name */
         display: inline-block; /* Default, ensure it's there */
     }
     header .headerRight { /* e.g., "(Web Designer & Developer)" */
-        font-size: 0.7rem; 
+        font-size: 1rem; 
         color: #555; /* Dark grey */
-    }
+        margin-left: 0rem!important;    
+      }
 
     .hero .nav { /* Navigation in the hero section, now part of fixed header */
         position: static; 
-        padding: 0;
+        padding: 3rem 1.25rem; /* Match target padding */
+        margin-left: 30rem !important; /* Reset problematic margin */
+        margin-top: -17rem !important; /* Reset problematic margin */
     }
     .hero .nav ul {
-        padding: 0;
-        margin: 0;
         display: flex;
         flex-direction: column;
         align-items: flex-end; 
     }
     .hero .nav ul li {
-        line-height: 1.5; /* Tighter line height */
+        line-height: 5rem; /* Tighter line height */
         text-align: right;
+        margin-top: 0rem!important;
     }
     .hero .nav ul li a {
-        font-size: 0.85rem; /* Slightly smaller */
+        font-size: 2.5rem; /* Slightly smaller */
         font-weight: 500;
         color: #333; 
         padding: 0.05rem 0; /* Minimal vertical padding */
@@ -2718,36 +2720,38 @@ nav ul li a {
 
     /* --- Hero Section Content Flow --- */
     .hero {
-        padding: 1.5rem; /* Overall padding for hero content area */
-        margin-top: 0; 
+        padding: 1.5rem 1.5rem 1.5rem 1.5rem; /* Overall padding for hero content area */ 
         display: flex;
         flex-direction: column;
-        align-items: flex-start; /* Align children (name, tagline, button) to the left */
+        align-items: center; /* Changed from flex-start to center */
+        min-height: calc(135vh - 5rem); /* Fill viewport below fixed header */
+        min-width: calc(190vw - 5rem);
+        justify-content: center; /* Vertically center content in the taller hero */
     }
 
     /* Main Name Block - Target: HUY NGUYEN© */
     .hero .name {
-        font-size: 2.8rem; /* Adjust as needed */
+        font-size: 6.5rem; /* Adjust as needed */
         font-weight: 700; /* Bold */
         color: #000; /* Black text */
         letter-spacing: -0.5px;
         line-height: 1.1;
         text-align: left;
-        margin: 1rem 0 1.5rem 0; /* Top, 0 R/L, Bottom */
+        margin: -10rem 0 1.5rem 0; /* Top, 0 R/L, Bottom */
         padding: 0; 
         position: static; 
         width: auto; /* Not full width, let content define it */
         order: 1;
     }
     .hero .name .reyes { /* If you have a separate class for REYES */
-        letter-spacing: -0.5px; /* Match main name */
+        letter-spacing: 8.5px!important; /* Match main name */
     }
     .hero .name::after { /* Copyright symbol styling */
         content: "©"; /* Ensure you have this if you want it */
-        font-size: 0.8em; /* Relative to main name size */
+        font-size: 20.5rem!important; /* Relative to main name size */
         font-weight: normal; /* Lighter */
         vertical-align: baseline; /* Adjust as needed */
-        margin-left: 0.2em;
+        margin-left: 10rem!important;
         display: inline; /* To be on the same line */
         /* Remove block, text-align, margin-top from previous version */
     }
@@ -2771,33 +2775,35 @@ nav ul li a {
         display: none;
     }
     .hero .tagline {
-        font-size: 1rem; /* Match target */
+        font-size: 1.5rem; /* Match target */
         font-weight: normal; /* Normal weight */
-        line-height: 1.5; /* Match target */
+        line-height: 2.5; /* Match target */
         color: #333; /* Darker text */
         margin: 0 0 1.5rem 0; /* Space below tagline */
         text-align: left;
-        display: block; 
+        margin-top: 0rem!important;
+        padding-left: 1rem!important;
     }
 
     /* BOOK A CALL Button */
     .hero .cta-button { 
-        font-size: 0.9rem; 
+        font-size: 1.2rem; 
         font-weight: 500;
         color: #fff; 
         background-color: #000; /* Black background */
-        padding: 0.8rem 1.2rem;
+        padding: 1rem 1.2rem;
         border-radius: 2rem; /* Keep rounded */
         text-align: center;
-        width: auto; /* Fit content */
+        width: 20rem; /* Fit content */
+        height: 4rem;
         min-width: auto; /* Reset */
         max-width: none; /* Reset */
-        align-self: flex-start; 
-        margin: 0 0 2rem 0; /* Space below button */
+        align-self: flex-start;
+        margin-top: 3rem!important;
         text-decoration: none;
     }
     .hero .cta-button .arrow-icon { /* Style the arrow inside this specific button */
-        font-size: 1em; /* Relative to button text */
+        font-size: 1.2rem; /* Relative to button text */
         margin-left: 0.5em;
         display: inline-block;
     }
@@ -2808,22 +2814,24 @@ nav ul li a {
         display: flex;
         flex-direction: row; /* Try to put image and availability in a row */
         align-items: flex-end; /* Align to bottom */
-        width: 100%;
-        margin-top: 1rem; /* Space above this block */
+        object-fit: fill;
+        margin-top: 10rem; /* Space above this block */
         order: 2; /* Comes after content-left (tagline/button) */
     }
     .hero .content-center { /* Contains profile image */
         order: 1; /* Image first in this wrapper */
+        padding-top: .5rem!important;
         text-align: left; /* Align image to the left */
-        margin-bottom: 0; /* Remove bottom margin as it's in a flex row */
+        margin-top: -35rem!important; /* Remove bottom margin as it's in a flex row */
+        margin-left: 16.5rem!important;
         flex-shrink: 0; /* Don't let image shrink too much */
+  
     }
     .hero .profile-image {
-        width: 100px; /* Smaller fixed width like target */
-        height: auto; /* Maintain aspect ratio */
-        max-width: 100px; /* Enforce max width */
-        margin: 0; /* Reset margins, alignment handled by parent */
-        border-radius: 4px; /* Slight radius like target */
+      width: auto;
+      height: auto; /* Maintain aspect ratio */
+      /* Enforce max width */
+      border-radius: 3px; /* Slight radius like target */
     }
 
     .hero .content-right { /* Contains availability */
@@ -2836,7 +2844,7 @@ nav ul li a {
     .hero .availability {
         text-align: right;
         padding: 0;
-        margin-top: 0;
+        margin-top: 3rem;
     }
     .hero .availability-text {
         font-size: 0.7rem; 
@@ -2848,6 +2856,80 @@ nav ul li a {
         font-weight: 600; /* Bolder date */
         color: #000; /* Black date text */
         line-height: 1.1;
+    }
+
+    /* Ensure hero content starts clear of fixed header */
+    .hero {
+        /* padding-top is already 1.5rem, this might be enough if body padding-top is correct */
+        /* margin-top: 3rem; /* Add a bit of margin if body padding-top isn't quite enough */
+        /* Re-evaluating this: body has 5rem padding-top, hero has 1.5rem padding-top. Total 6.5rem space. Should be OK. */
+        /* Let's ensure hero's default top margin is not negative. */
+        margin-top: 0 !important; /* Reset any negative margin */
+    }
+
+    /* Services section adjustments for mobile */
+    #services.page-section.services-section-dark-bg {
+        position: relative !important; /* Ensure it's in normal flow */
+        margin-top: .5rem !important;  /* Increased space above the services section itself */
+        padding-top: 0rem !important; /* Adjust padding for mobile if needed */
+        z-index: 1; /* Ensure it's lower than fixed header but above normal flow items if any absolute positioning was an issue */
+    }
+
+    .services-sticky-container {
+        margin-top: 0 !important; /* Reset the negative margin from desktop styles FOR MOBILE */
+        position: relative; /* Ensure it doesn't try to stick in a way that breaks layout */
+    }
+    
+    /* Make sticky headers non-sticky on mobile to simplify layout and prevent overlap */
+    .services-sticky-container > .sticky-header {
+        position: relative !important; /* Change from sticky to relative */
+        top: auto !important; /* Remove top positioning */
+        z-index: auto !important; /* Reset z-index */
+        margin-right: 0 !important; /* Reset desktop margins */
+        margin-left: 0 !important; /* Reset desktop margins */
+        padding: 1rem 1.5rem !important; /* Adjust padding for mobile */
+        height: auto !important; /* Let content define height */
+        width: 100% !important; /* Ensure full width */
+        box-sizing: border-box !important; /* Include padding in width */
+    }
+    .sticky-header.service-item-sticky-header h3 {
+        margin-left: 0 !important; /* Reset desktop margin */
+        font-size: 1.8rem !important; /* Adjust font size for mobile */
+    }
+    .service-number {
+        margin-left: 0 !important; /* Reset desktop margin */
+        font-size: 2.5rem !important; /* Adjust font size for mobile */
+        margin-right: 0.5rem; /* Add a small gap */
+    }
+    .main-title-sticky-content .services-subtitle {
+        margin-left: 0 !important; /* Reset desktop margin */
+        text-align: center; /* Center subtitle on mobile */
+        font-size: 1.2rem !important;
+    }
+    .main-title-sticky-content .projects-container {
+        margin-left: 0 !important; /* Reset desktop margin */
+        width: 100% !important; /* Full width on mobile */
+        max-width: 100% !important;
+    }
+    .projects-header,
+    .project-item {
+        gap: 1rem !important; /* Reduce gap for mobile */
+        padding: 0.5em 0 !important; /* Adjust padding */
+        flex-direction: column; /* Stack project name/director on mobile */
+        align-items: center; /* Center them when stacked */
+        text-align: center;
+    }
+    .main-title-sticky-content .services-intro-paragraph {
+        margin-left: 0 !important; /* Reset desktop margin */
+        font-size: 1rem !important;
+        text-align: left;
+    }
+    .service-item-sticky-content p,
+    .service-subitems {
+        margin-left: 0 !important; /* Reset desktop margin */
+    }
+     .service-subitems li {
+        font-size: 1.2rem !important;
     }
 
 }
