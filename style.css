@@ -2958,7 +2958,7 @@ nav ul li a {
 
 .mobile-reyes-copyright {
     display: inline; /* Show it on mobile */
-    font-size: 1.5rem; /* Or adjust as needed */
+    font-size: 2.5rem; /* Or adjust as needed */
     font-weight: normal;
     vertical-align: super; /* Position like a superscript */
     color: #1a1a1a; /* Match highlight color or main name color */
