@@ -382,7 +382,7 @@ nav ul li a {
     .footer-container {
         flex-direction: column; /* Stack columns */
         align-items: center; /* Center items when stacked */
-        text-align: center;
+    text-align: center;
     }
     .footer-column {
         min-width: 100%; /* Full width for stacked columns */
@@ -672,7 +672,7 @@ nav ul li a {
   
   .project-item {
     color: #4f4f4f;
-  }
+}
 
 /* Noise Animation Keyframes - Ensure this exists */
 @keyframes noise-animation {
@@ -2404,7 +2404,7 @@ nav ul li a {
   flex-direction: column;
   align-items: center; /* Center align the pre-heading and h2 */
   box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Optional: add some shadow to the box */
-  
+
 }
 
 #contact h2{
@@ -2763,13 +2763,15 @@ nav ul li a {
     }
 
     .hero .name .reyes .mobile-reyes-copyright { /* The new span next to REYES */
-        display: inline;           /* Show it on mobile */
-        font-size: 1.2rem;         /* Mobile-appropriate size - adjusted from 1.5rem */
-        font-weight: normal;
-        vertical-align: super;
-        color: #1a1a1a;
-        margin-left: 0.1em;
-        margin-bottom: -10rem!important;
+        display: inline-block; /* Changed to inline-block for positioning */
+        font-size: 3rem !important; 
+        font-weight: 900 !important;
+        color: #1a1a1a; 
+        margin-left: 0.1em; 
+        position: relative; /* Added for precise vertical adjustment */
+        top: -0.5em; /* Adjust this value to move it higher or lower. Negative moves up. */
+        /* vertical-align: super; */ /* Removed as relative positioning is used */
+        /* margin-bottom: -10rem !important; */ /* Removed */
     }
 
     /* Tagline - Target: "I help growing brands..." */
@@ -2893,28 +2895,72 @@ nav ul li a {
 
     .services-sticky-container {
         margin-top: 0 !important; /* Reset the negative margin from desktop styles FOR MOBILE */
-        position: relative; /* Ensure it doesn't try to stick in a way that breaks layout */
+        /* position: relative; */ /* Allow sticky to work, remove this override */
+        /* Define mobile-specific heights for stacking calculations */
+        --sticky-main-title-header-height: 60px;
+        --sticky-service-header-height: 45px;
     }
     
-    /* Make sticky headers non-sticky on mobile to simplify layout and prevent overlap */
+    /* Make sticky headers work on mobile with adjusted properties */
     .services-sticky-container > .sticky-header {
-        position: relative !important; /* Change from sticky to relative */
-        top: auto !important; /* Remove top positioning */
-        z-index: auto !important; /* Reset z-index */
-        margin-right: 0 !important; /* Reset desktop margins */
-        margin-left: 0 !important; /* Reset desktop margins */
-        padding: 1rem 1.5rem !important; /* Adjust padding for mobile */
-        height: auto !important; /* Let content define height */
-        width: 100% !important; /* Ensure full width */
-        box-sizing: border-box !important; /* Include padding in width */
+        /* position: relative !important; */ /* REMOVE to allow sticky */
+        /* top: auto !important; */ /* REMOVE to allow calculated top */
+        position: sticky !important; /* Ensure sticky is applied */
+        z-index: auto !important; /* Reset z-index, desktop values might be fine or need mobile specific if issues */
+        margin-right: 0 !important; 
+        margin-left: 0 !important; 
+        padding: 0.5rem 1rem !important; /* Reduced padding for smaller headers */
+        /* height: auto !important; */ /* REMOVE - will be set by specific rules below */
+        width: 100% !important; 
+        box-sizing: border-box !important; 
     }
+
+    /* Specifically target the first sticky header (main title: "How I can help you") */
+    .services-sticky-container > .sticky-header:nth-child(1),
+    .sticky-header.main-title-sticky-header {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+        padding: 0.5rem 1rem !important; /* Consistent padding with the general rule */
+        width: 100% !important;
+        box-sizing: border-box !important;
+        height: var(--sticky-main-title-header-height) !important; /* Use mobile variable */
+        /* z-index will be inherited from desktop or adjusted if needed */
+    }
+
+    .sticky-header.main-title-sticky-header h2 {
+        font-size: 1.8rem !important; /* Adjust main title font size for mobile */
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        justify-content: space-between; /* Allow button to sit better */
+    }
+    
+    /* Adjust the CTA button next to "How I can help you /" */
+    .sticky-header.main-title-sticky-header h2 > span:first-of-type {
+        margin-right: 0.5rem !important; /* Reduced space for mobile */
+    }
+    .cta-button-services-header {
+        margin-left: 0.5rem !important; /* Adjust button margin for mobile */
+        padding: 0.5rem 0.8rem !important; /* Smaller padding for smaller button */
+        font-size: 0.9rem !important; /* Smaller font for the button */
+    }
+
     .sticky-header.service-item-sticky-header h3 {
         margin-left: 0 !important; /* Reset desktop margin */
-        font-size: 1.8rem !important; /* Adjust font size for mobile */
+        font-size: 1.5rem !important; /* Further reduce font size for mobile sticky header */
     }
+    /* Apply specific height to individual service item headers */
+    .services-sticky-container > .sticky-header:nth-child(3), /* Header for Service 1 */
+    .services-sticky-container > .sticky-header:nth-child(5), /* Header for Service 2 */
+    .services-sticky-container > .sticky-header:nth-child(7)  /* Header for Service 3 */
+    /* .sticky-header.service-item-sticky-header */ /* This general class might also need it if not covered by nth-child */
+     {
+        height: var(--sticky-service-header-height) !important; /* Use mobile variable */
+        /* padding adjusted in the general .services-sticky-container > .sticky-header rule */
+    }
+
     .service-number {
         margin-left: 0 !important; /* Reset desktop margin */
-        font-size: 2.5rem !important; /* Adjust font size for mobile */
+        font-size: 2rem !important; /* Adjusted font size for mobile - was 2.5rem */
         margin-right: 0.5rem; /* Add a small gap */
     }
     .main-title-sticky-content .services-subtitle {
@@ -2937,7 +2983,7 @@ nav ul li a {
     }
     .main-title-sticky-content .services-intro-paragraph {
         margin-left: 0 !important; /* Reset desktop margin */
-        font-size: 1rem !important;
+        font-size: 0.9rem !important; /* Slightly smaller for mobile */
         text-align: left;
     }
     .service-item-sticky-content p,
@@ -2954,13 +3000,4 @@ nav ul li a {
 /* Hide the new mobile-specific copyright span by default */
 .mobile-reyes-copyright {
     display: none;
-}
-
-.mobile-reyes-copyright {
-    display: inline; /* Show it on mobile */
-    font-size: 3rem!important; /* Or adjust as needed */
-    font-weight: 900!important;
-    color: #1a1a1a; /* Match highlight color or main name color */
-    margin-left: 0.1em; /* Adjust spacing as needed */
-    margin-bottom: 10rem!important;
 }
