@@ -2734,17 +2734,18 @@ nav ul li a {
 
     /* --- Hero Section Content Flow --- */
     .hero {
-        padding: 1.5rem; /* Consistent padding */ 
+        padding: 1.5rem 1.5rem 1.5rem 1.5rem; /* Overall padding for hero content area - REVERTED */ 
         display: flex;
         flex-direction: column;
         align-items: center; 
-        min-height: calc(100vh - 5rem); /* Adjusted min-height relative to viewport */
-        width: 100%; /* CHANGED: Was min-width: calc(190vw - 5rem) */
-        box-sizing: border-box; /* Added for good measure */
+        min-height: calc(135vh - 5rem); /* REVERTED to original calc */
+        min-width: calc(190vw - 5rem); /* REVERTED to original calc */
+        /* width: 100%; */ /* REMOVED width: 100% */
+        box-sizing: border-box; 
         justify-content: center; 
-        margin-left: 0 !important; /* Ensure hero itself is not shifted */
-        margin-right: 0 !important; /* Ensure hero itself is not shifted */
-        overflow-x: hidden; /* Prevent hero from causing horizontal scroll */
+        margin-left: 0 !important; 
+        margin-right: 0 !important; 
+        overflow-x: hidden; 
     }
 
     /* Main Name Block - Target: HUY NGUYEN© */
@@ -2898,15 +2899,29 @@ nav ul li a {
     }
 
     /* Services section adjustments for mobile */
-    #services.page-section.services-section-dark-bg {
+    #services.page-section.services-section-dark-bg,
+    #about.page-section, /* ADDED #about */
+    #contact /* ADDED #contact */ {
         position: relative !important;
         margin: 0.5rem 0 0 0 !important; /* Reset horizontal margins, keep top margin */
         padding: 0 !important; /* Reset all padding */
         z-index: 1; 
         width: 100vw !important; /* Force viewport width */
+        min-width: 100vw !important; /* Ensure minimum viewport width */
         max-width: 100vw !important; /* Ensure it doesn't exceed viewport */
         box-sizing: border-box !important;
         overflow-x: hidden !important;
+        left: 0 !important; /* Explicitly align left */
+        right: 0 !important; /* Explicitly allow it to go to the right edge */
+        transform: none !important; /* Reset any transforms */
+    }
+
+    /* Ensure children of these sections also behave */
+    #services.page-section.services-section-dark-bg > *,
+    #about.page-section > *,
+    #contact > * {
+        max-width: 100% !important; /* Prevent children from overflowing their 100vw parent */
+        box-sizing: border-box !important;
     }
 
     .services-sticky-container {
@@ -3029,12 +3044,12 @@ nav ul li a {
     /* Adjust sticky content blocks for mobile stacking */
     .sticky-content-block {
         min-height: 30vh !important; 
-        padding: 1rem !important; /* Consistent padding */
-        margin: 0 !important; /* Reset margins */
-        width: 100% !important;
+        padding: 1rem !important; 
+        margin: 0 !important; 
+        width: 100% !important; /* Ensure this is 100% of its parent */
         max-width: 100% !important;
         box-sizing: border-box !important;
-        transform: none !important; /* Reset any transforms */
+        transform: none !important; 
     }
     
     .services-sticky-container > .sticky-content-block:nth-of-type(4) { 
@@ -3052,6 +3067,81 @@ nav ul li a {
      .service-subitems li {
         font-size: 1.2rem !important;
         padding: 0.5rem 0 !important; /* Adjust padding */
+    }
+
+    /* --- About Section Mobile Adjustments --- */
+    #about .blog {
+        width: 100% !important; /* Was max-width: none; */
+        max-width: 100vw !important; /* Ensure it uses full viewport width */
+        padding: 1rem !important; /* Adjust padding for mobile */
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        grid-template-columns: 1fr !important; /* Simplify to single column for mobile */
+        display: block !important; /* Override grid if it causes issues with width */
+    }
+    #about .blog-part:not(:last-child) {
+        border-right: none !important; /* Remove vertical borders in single column */
+    }
+    #about .is-menu,
+    #about .right-blog .blog-menu,
+    #about .right-blog {
+        display: none !important; /* Hide side menus/columns on mobile */
+    }
+    #about .middle-content-wrapper {
+        border-right: none !important;
+        width: 100% !important; /* Ensure middle content wrapper is full width */
+        padding: 0 !important; /* Reset padding if any */
+    }
+    #about .page-number {
+        display: none !important; /* Hide page number which was in a side column */
+    }
+    #about .blog-header-container, /* Ensure these take full width of .blog */
+    #about .static-header,
+    #about .blog-article {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        padding: 0.5rem !important; /* Consistent padding for inner elements */
+    }
+    #about .blog-big__title {
+        font-size: 3rem !important; /* Adjust title for mobile */
+        letter-spacing: -1px !important;
+    }
+
+    /* --- Contact Section Mobile Adjustments --- */
+    #contact .contact-main-box {
+        width: 100% !important; /* Make the inner box take full width of #contact */
+        max-width: 100% !important; /* Override any previous max-width like 90% */
+        margin: 0 !important;
+        padding: 3rem 1rem !important; /* Adjust padding for mobile */
+        box-sizing: border-box !important;
+    }
+    #contact h2 {
+        font-size: 3rem !important; /* Adjust for mobile */
+        line-height: 1.1 !important;
+        margin-bottom: 2rem !important;
+    }
+    .contact-pre-heading {
+        font-size: 1rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+    .contact-bottom-left,
+    .contact-bottom-right {
+        position: static !important; /* Stack them in normal flow */
+        text-align: center !important;
+        margin-top: 1.5rem;
+        width: 100%; /* Allow them to center properly */
+    }
+    .availability-box {
+        justify-content: center !important; /* Center items in the box */
+        margin: 0 auto; /* Center the box itself */
+        max-width: 280px; /* Prevent it from being overly wide */
+    }
+    .inquiries-text {
+        font-size: 0.7rem !important;
+    }
+    .email-contact {
+        font-size: 0.9rem !important;
     }
 
 }
