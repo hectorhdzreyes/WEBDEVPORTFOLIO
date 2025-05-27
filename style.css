@@ -2891,6 +2891,7 @@ nav ul li a {
         margin-top: .5rem !important;  /* Increased space above the services section itself */
         padding-top: 0rem !important; /* Adjust padding for mobile if needed */
         z-index: 1; /* Ensure it's lower than fixed header but above normal flow items if any absolute positioning was an issue */
+        width: 100%!important;
     }
 
     .services-sticky-container {
