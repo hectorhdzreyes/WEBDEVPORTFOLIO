@@ -2887,119 +2887,159 @@ nav ul li a {
 
     /* Services section adjustments for mobile */
     #services.page-section.services-section-dark-bg {
-        position: relative !important; /* Ensure it's in normal flow */
-        margin-top: .5rem !important;  /* Increased space above the services section itself */
-        padding-top: 0rem !important; 
-        padding-left: 0 !important; /* Ensure no horizontal padding */
-        padding-right: 0 !important; /* Ensure no horizontal padding */
+        position: relative !important;
+        margin: 0.5rem 0 0 0 !important; /* Reset horizontal margins, keep top margin */
+        padding: 0 !important; /* Reset all padding */
         z-index: 1; 
-        width: 100% !important;
-        box-sizing: border-box !important; /* Explicitly set box-sizing */
-        overflow-x: hidden; /* Prevent accidental horizontal scroll on the section itself */
+        width: 100vw !important; /* Force viewport width */
+        max-width: 100vw !important; /* Ensure it doesn't exceed viewport */
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
     }
 
     .services-sticky-container {
-        margin-top: 0 !important; 
-        /* position: relative; */ 
+        margin: 0 !important; /* Reset all margins */
+        padding: 0 !important; /* Reset all padding */
+        width: 100% !important; /* Full width of its parent (#services) */
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        /* Define mobile-specific heights for stacking calculations */
         --sticky-main-title-header-height: 60px;
         --sticky-service-header-height: 45px;
-        width: 100% !important; /* Ensure container takes full width */
-        padding-left: 0 !important; /* Reset horizontal padding */
-        padding-right: 0 !important; /* Reset horizontal padding */
-        box-sizing: border-box !important;
     }
     
     /* Make sticky headers work on mobile with adjusted properties */
     .services-sticky-container > .sticky-header {
-        /* position: relative !important; */ /* REMOVE to allow sticky */
-        /* top: auto !important; */ /* REMOVE to allow calculated top */
-        position: sticky !important; /* Ensure sticky is applied */
-        z-index: auto !important; /* Reset z-index, desktop values might be fine or need mobile specific if issues */
-        margin-right: 0 !important; 
-        margin-left: 0 !important; 
-        padding: 0.5rem 1rem !important; /* Reduced padding for smaller headers */
-        /* height: auto !important; */ /* REMOVE - will be set by specific rules below */
+        position: sticky !important;
+        z-index: auto !important; /* Let stacking context be natural or inherit desktop */
+        margin: 0 !important; /* Reset all margins */
+        padding: 0.5rem 1rem !important; /* Minimal vertical, some horizontal for content */
         width: 100% !important; 
+        max-width: 100% !important;
         box-sizing: border-box !important; 
+        left: 0 !important; /* Ensure it aligns to the left */
+        right: 0 !important; /* Ensure it aligns to the right (stretches) */
+        transform: none !important; /* Reset any transforms */
     }
 
     /* Specifically target the first sticky header (main title: "How I can help you") */
     .services-sticky-container > .sticky-header:nth-child(1),
     .sticky-header.main-title-sticky-header {
-        margin-right: 0 !important;
-        margin-left: 0 !important;
-        padding: 0.5rem 1rem !important; /* Consistent padding with the general rule */
-        width: 100% !important;
-        box-sizing: border-box !important;
-        height: var(--sticky-main-title-header-height) !important; /* Use mobile variable */
-        /* z-index will be inherited from desktop or adjusted if needed */
+        height: var(--sticky-main-title-header-height) !important;
+        /* All other properties (width, margin, padding) inherited from general .sticky-header rule above */
     }
 
     .sticky-header.main-title-sticky-header h2 {
-        font-size: 1.8rem !important; /* Adjust main title font size for mobile */
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        justify-content: space-between; /* Allow button to sit better */
+        font-size: 1.8rem !important;
+        margin: 0 !important; /* Reset margin on the h2 itself */
+        padding: 0 0.5rem !important; /* Padding inside the h2 if needed, around text/button */
+        width: 100% !important; /* Ensure h2 takes full width of its parent header */
+        box-sizing: border-box !important;
+        display: flex !important; /* Re-ensure flex for alignment */
+        justify-content: space-between !important; 
+        align-items: center !important;
     }
     
-    /* Adjust the CTA button next to "How I can help you /" */
     .sticky-header.main-title-sticky-header h2 > span:first-of-type {
-        margin-right: 0.5rem !important; /* Reduced space for mobile */
+        margin-right: 0.5rem !important;
+        white-space: nowrap; /* Prevent text from wrapping if h2 is too narrow */
     }
     .cta-button-services-header {
-        margin-left: 0.5rem !important; /* Adjust button margin for mobile */
-        padding: 0.5rem 0.8rem !important; /* Smaller padding for smaller button */
-        font-size: 0.9rem !important; /* Smaller font for the button */
+        margin-left: 0.5rem !important; 
+        padding: 0.5rem 0.8rem !important; 
+        font-size: 0.9rem !important; 
+        flex-shrink: 0; /* Prevent button from shrinking */
     }
 
     .sticky-header.service-item-sticky-header h3 {
-        margin-left: 0 !important; /* Reset desktop margin */
-        font-size: 1.5rem !important; /* Further reduce font size for mobile sticky header */
+        margin: 0 !important; /* Reset margins */
+        padding: 0 0.5rem !important; /* Add some padding */
+        font-size: 1.5rem !important; 
+        width: 100% !important;
+        box-sizing: border-box !important;
+        display: flex; /* For aligning number and title */
+        align-items: center;
     }
-    /* Apply specific height to individual service item headers */
-    .services-sticky-container > .sticky-header:nth-child(3), /* Header for Service 1 */
-    .services-sticky-container > .sticky-header:nth-child(5), /* Header for Service 2 */
-    .services-sticky-container > .sticky-header:nth-child(7)  /* Header for Service 3 */
-    /* .sticky-header.service-item-sticky-header */ /* This general class might also need it if not covered by nth-child */
-     {
-        height: var(--sticky-service-header-height) !important; /* Use mobile variable */
-        /* padding adjusted in the general .services-sticky-container > .sticky-header rule */
+    
+    .services-sticky-container > .sticky-header:nth-child(3), 
+    .services-sticky-container > .sticky-header:nth-child(5), 
+    .services-sticky-container > .sticky-header:nth-child(7) {
+        height: var(--sticky-service-header-height) !important;
     }
 
     .service-number {
-        margin-left: 0 !important; /* Reset desktop margin */
-        font-size: 2rem !important; /* Adjusted font size for mobile - was 2.5rem */
-        margin-right: 0.5rem; /* Add a small gap */
+        margin: 0 0.5rem 0 0 !important; /* Reset left/bottom margin, add right margin */
+        font-size: 2rem !important; 
+        flex-shrink: 0; /* Prevent shrinking */
     }
+
+    .service-title {
+        flex-grow: 1; /* Allow title to take remaining space */
+        white-space: nowrap; /* Prevent wrapping if too narrow */
+        overflow: hidden; /* Hide overflow if still too wide */
+        text-overflow: ellipsis; /* Add ellipsis if text overflows */
+    }
+
     .main-title-sticky-content .services-subtitle {
-        margin-left: 0 !important; /* Reset desktop margin */
-        text-align: center; /* Center subtitle on mobile */
+        margin: 0 auto 0.5rem auto !important; /* Center with auto h-margins, add bottom margin */
+        padding: 0 1rem !important; /* Add horizontal padding */
+        text-align: center !important; 
         font-size: 1.2rem !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
     .main-title-sticky-content .projects-container {
-        margin-left: 0 !important; /* Reset desktop margin */
-        width: 100% !important; /* Full width on mobile */
+        margin: 0 !important; /* Reset margins */
+        padding: 0 1rem !important; /* Add horizontal padding */
+        width: 100% !important; 
         max-width: 100% !important;
+        box-sizing: border-box !important;
     }
     .projects-header,
     .project-item {
-        gap: 1rem !important; /* Reduce gap for mobile */
-        padding: 0.5em 0 !important; /* Adjust padding */
-        flex-direction: column; /* Stack project name/director on mobile */
-        align-items: center; /* Center them when stacked */
+        gap: 0.5rem !important; /* Reduced gap for mobile */
+        padding: 0.5em 0 !important; 
+        flex-direction: column; 
+        align-items: center; 
         text-align: center;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
     .main-title-sticky-content .services-intro-paragraph {
-        margin-left: 0 !important; /* Reset desktop margin */
-        font-size: 0.9rem !important; /* Slightly smaller for mobile */
+        margin: 0 !important; /* Reset margins */
+        padding: 0.5rem 1rem !important; /* Add padding */
+        font-size: 0.9rem !important; 
         text-align: left;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
+
+    /* Adjust sticky content blocks for mobile stacking */
+    .sticky-content-block {
+        min-height: 30vh !important; 
+        padding: 1rem !important; /* Consistent padding */
+        margin: 0 !important; /* Reset margins */
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        transform: none !important; /* Reset any transforms */
+    }
+    
+    .services-sticky-container > .sticky-content-block:nth-of-type(4) { 
+        min-height: auto !important; 
+        padding-bottom: 2rem !important; 
+    }
+
     .service-item-sticky-content p,
     .service-subitems {
-        margin-left: 0 !important; /* Reset desktop margin */
+        margin: 0 !important; /* Reset margins */
+        padding: 0.5rem 0 !important; /* Add vertical padding, reset horizontal */
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
      .service-subitems li {
         font-size: 1.2rem !important;
+        padding: 0.5rem 0 !important; /* Adjust padding */
     }
 
 }
