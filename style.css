@@ -2646,6 +2646,27 @@ nav ul li a {
 /* == MOBILE RESPONSIVE STYLES (START) == */
 @media (max-width: 768px) {
 
+    /* --- TEMPORARY DEBUG OUTLINES --- */
+    body, body * { /* More aggressive: outline all elements within body */
+        /* outline: 1px solid red !important; */
+    }
+    section, div, header, footer, main, article, aside {
+        outline: 1px dashed lime !important; 
+    }
+    #services, #about, #contact, .hero {
+        outline: 2px solid orange !important; /* Thicker outline for main sections */
+    }
+    .services-sticky-container, .sticky-header, .sticky-content-block {
+        outline: 1px dotted cyan !important; /* Specific to services internals */
+    }
+    #about .blog, #about .middle-content-wrapper, #about .blog-article {
+        outline: 1px dotted magenta !important; /* Specific to about internals */
+    }
+    #contact .contact-main-box {
+        outline: 1px dotted yellow !important; /* Specific to contact internals */
+    }
+    /* --- END TEMPORARY DEBUG OUTLINES --- */
+
     /* --- General Body/Container Adjustments for Mobile --- */
     body {
         padding-top: 2rem; /* Adjusted for potentially slimmer fixed header */
