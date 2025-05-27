@@ -2960,8 +2960,7 @@ nav ul li a {
     display: inline; /* Show it on mobile */
     font-size: 3rem!important; /* Or adjust as needed */
     font-weight: 900!important;
-    vertical-align: super; /* Position like a superscript */
     color: #1a1a1a; /* Match highlight color or main name color */
     margin-left: 0.1em; /* Adjust spacing as needed */
-    margin-bottom: -10rem!important;
+    margin-bottom: 10rem!important;
 }
