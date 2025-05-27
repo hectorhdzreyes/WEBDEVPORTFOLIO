@@ -726,5 +726,14 @@
             }
         });
     </script>
+    <script>
+        // Explicitly initialize Cal.com if it hasn't been already
+        // This is a fallback and might not be strictly necessary if embed.js works as expected.
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof Cal !== "undefined" && Cal.instance === undefined) {
+                Cal("init");
+            }
+        });
+    </script>
 </body>
 </html>

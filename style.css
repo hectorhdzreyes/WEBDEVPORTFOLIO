@@ -2754,13 +2754,13 @@ nav ul li a {
         letter-spacing: 8.5px!important; /* Match main name */
     }
     .hero .name::after { /* Copyright symbol styling */
-        content: "©"; /* Ensure you have this if you want it */
-        font-size: 20.5rem!important; /* Relative to main name size */
-        font-weight: normal; /* Lighter */
-        vertical-align: baseline; /* Adjust as needed */
-        margin-left: 10rem!important;
-        display: inline; /* To be on the same line */
-        /* Remove block, text-align, margin-top from previous version */
+        content: "©"; 
+        font-size: 1.5rem; /* Adjusted for better inline appearance */
+        font-weight: normal; 
+        vertical-align: super; /* Position like a superscript */
+        margin-left: 0.25rem; /* Small space from the name */
+        display: inline; 
+        color: #1a1a1a; /* Match highlight color or main name color */
     }
 
     /* Tagline - Target: "I help growing brands..." */
