@@ -2887,7 +2887,7 @@ nav ul li a {
 
     /* Services section adjustments for mobile */
     #services.page-section.services-section-dark-bg {
-        position: relative !important; /* Ensure it's in normal flow */
+        position: relative !important; /* Ensure it's in normal flow */ /* Ensure it's in normal flow */
         margin-top: .5rem !important;  /* Increased space above the services section itself */
         padding-top: 0rem !important; /* Adjust padding for mobile if needed */
         z-index: 1; /* Ensure it's lower than fixed header but above normal flow items if any absolute positioning was an issue */
@@ -2900,6 +2900,7 @@ nav ul li a {
         /* Define mobile-specific heights for stacking calculations */
         --sticky-main-title-header-height: 60px;
         --sticky-service-header-height: 45px;
+        --sticky-services-section-width: 100%!important;
     }
     
     /* Make sticky headers work on mobile with adjusted properties */
