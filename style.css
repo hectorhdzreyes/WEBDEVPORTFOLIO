@@ -2681,6 +2681,18 @@ nav ul li a {
         box-sizing: border-box !important;
         overflow-x: hidden !important; /* Ensure no horizontal scroll on body */
     }
+
+    main { /* NEW RULE TO ENSURE MAIN IS FULL WIDTH */
+        width: 100vw !important;
+        min-width: 100vw !important;
+        max-width: 100vw !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important; /* Prevent main from causing scroll, children should be managed */
+        position: relative; /* Good practice for a main container */
+    }
+
     .container { 
         padding: 1.5rem 1rem; /* Adjusted top padding */
         width: 100%;
