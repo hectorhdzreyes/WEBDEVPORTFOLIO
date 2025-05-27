@@ -635,70 +635,96 @@
             <div class="footer-column footer-socials">
                 <h4>Socials</h4>
                 <ul>
-                    <li><a href="#" target="_blank">Instagram</a></li>
-                    <li><a href="#" target="_blank">Tiktok</a></li>
-                    
-
+                    <li><a href="https://www.linkedin.com/in/hector-hernandez-reyes/" target="_blank">LinkedIn</a></li>
+                    <li><a href="https://github.com/HectorInti" target="_blank">GitHub</a></li>
+                    <li><a href="https://www.instagram.com/hector.inti/" target="_blank">Instagram</a></li>
                 </ul>
             </div>
             <div class="footer-column footer-resources">
-                <h4>Other</h4>
+                <h4>Resources</h4>
                 <ul>
-                    <li><a href="#">NA</a></li>
-                    <li><a href="#">NA</a></li>
-                    <li><a href="#">NA</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
             <div class="footer-copyright">
-                <p>&copy; 2024 Hector 
-                  <br>
-                  Hernandez Reyes</p>
-                <p>All rights reserved.</p>
+                <p>&copy; 2024 Hector Reyes <br> All rights reserved</p>
             </div>
             <div class="footer-local-time">
                 <p>LOCAL TIME</p>
-                <p id="current-time">--:--:-- --, ---</p>
+                <p id="local-time"></p>
             </div>
-            <a href="#top" class="back-to-top-button">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px"><path d="M11.9999 10.8284L7.75732 15.071L6.34311 13.6568L11.9999 8L17.6568 13.6568L16.2426 15.071L11.9999 10.8284Z"></path></svg>
+            <a href="#" class="back-to-top-button">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="#090909" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </a>
         </div>
     </footer>
     <script>
-        function updateTime() {
-            const timeElement = document.getElementById('current-time');
-            if (timeElement) {
-                const now = new Date();
-                const hours = now.getHours();
-                const minutes = now.getMinutes().toString().padStart(2, '0');
-                const seconds = now.getSeconds().toString().padStart(2, '0');
-                const ampm = hours >= 12 ? 'PM' : 'AM';
-                const displayHours = (hours % 12) || 12; // Convert to 12-hour format
-                // const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone.split('/').pop().replace('_', ' '); // More generic time zone
-                const timeZoneAbbreviation = new Date().toLocaleTimeString('en', { timeZoneName:'short' }).split(' ')[2];
-
-                timeElement.textContent = `${displayHours}:${minutes}:${seconds} ${ampm}, ${timeZoneAbbreviation || 'LOC'}`;
-            }
-        }
-        setInterval(updateTime, 1000);
-        updateTime(); // Initial call
+        (function () {
+            // Cal.com embed script
+            var cal = document.createElement('script'); cal.type = 'text/javascript'; cal.async = true;
+            cal.src = 'https://app.cal.com/embed/embed.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(cal, s);
+        })();
     </script>
-    <!-- Cal element-click embed code begins -->
-<script type="text/javascript">
-  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "30min", {origin:"https://cal.com"});
+    <!-- D3.js and TopoJSON for the globe -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Footer local time
+            function updateLocalTime() {
+                const timeElement = document.getElementById('local-time');
+                if (timeElement) {
+                    const now = new Date();
+                    const options = { hour: '2-digit', minute: '2-digit', hour12: true, timeZoneName: 'short' };
+                    // Manually format to ensure desired output, e.g., "09:30 PM PST"
+                    let hours = now.getHours();
+                    const minutes = now.getMinutes();
+                    const ampm = hours >= 12 ? 'PM' : 'AM';
+                    hours = hours % 12;
+                    hours = hours ? hours : 12; // the hour '0' should be '12'
+                    const minutesStr = minutes < 10 ? '0' + minutes : minutes;
+                    
+                    // Getting the timezone abbreviation is tricky and varies by browser/OS.
+                    // Intl.DateTimeFormat().resolvedOptions().timeZone is more reliable for the IANA timezone name.
+                    // For a simple offset or common abbreviation, this might need a library or more complex logic.
+                    // For now, let's use the browser's interpretation from toLocaleTimeString.
+                    const timeString = now.toLocaleTimeString(undefined, options);
+                    // Extracting timezone part - this is heuristic and might not be robust for all locales
+                    let tzAbbr = '';
+                    const tzMatch = timeString.match(/([A-Z]{3,5}|GMT[+-]\d{1,2}(:\d{2})?)$/);
+                    if (tzMatch) {
+                        tzAbbr = tzMatch[0];
+                    } else {
+                        // Fallback if regex doesn't match (e.g., some non-English locales)
+                        try {
+                            tzAbbr = new Intl.DateTimeFormat(undefined, {timeZoneName:'short'}).formatToParts(now).find(part => part.type === 'timeZoneName').value;
+                        } catch (e) {
+                            // If even that fails, leave it blank or use a default
+                            tzAbbr = ''; 
+                        }
+                    }
 
-  
-  // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
-  // `data-cal-link="hectorhdzreyes/30min"`
-  // data-cal-namespace="30min"
-  // `data-cal-config='{"layout":"month_view"}'`
+                    timeElement.textContent = `${hours}:${minutesStr} ${ampm} ${tzAbbr}`;
+                }
+            }
+            updateLocalTime();
+            setInterval(updateLocalTime, 60000); // Update every minute
 
-  Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
-  </script>
-  <!-- Cal element-click embed code ends -->
-    <script src="works.js"></script>
+            // Back to top button
+            const backToTopButton = document.querySelector('.back-to-top-button');
+            if (backToTopButton) {
+                backToTopButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+        });
+    </script>
 </body>
 </html>
