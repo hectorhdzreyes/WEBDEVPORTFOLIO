@@ -2887,20 +2887,26 @@ nav ul li a {
 
     /* Services section adjustments for mobile */
     #services.page-section.services-section-dark-bg {
-        position: relative !important; /* Ensure it's in normal flow */ /* Ensure it's in normal flow */
+        position: relative !important; /* Ensure it's in normal flow */
         margin-top: .5rem !important;  /* Increased space above the services section itself */
-        padding-top: 0rem !important; /* Adjust padding for mobile if needed */
-        z-index: 1; /* Ensure it's lower than fixed header but above normal flow items if any absolute positioning was an issue */
-        width: 100%!important;
+        padding-top: 0rem !important; 
+        padding-left: 0 !important; /* Ensure no horizontal padding */
+        padding-right: 0 !important; /* Ensure no horizontal padding */
+        z-index: 1; 
+        width: 100% !important;
+        box-sizing: border-box !important; /* Explicitly set box-sizing */
+        overflow-x: hidden; /* Prevent accidental horizontal scroll on the section itself */
     }
 
     .services-sticky-container {
-        margin-top: 0 !important; /* Reset the negative margin from desktop styles FOR MOBILE */
-        /* position: relative; */ /* Allow sticky to work, remove this override */
-        /* Define mobile-specific heights for stacking calculations */
+        margin-top: 0 !important; 
+        /* position: relative; */ 
         --sticky-main-title-header-height: 60px;
         --sticky-service-header-height: 45px;
-        --sticky-services-section-width: 100%!important;
+        width: 100% !important; /* Ensure container takes full width */
+        padding-left: 0 !important; /* Reset horizontal padding */
+        padding-right: 0 !important; /* Reset horizontal padding */
+        box-sizing: border-box !important;
     }
     
     /* Make sticky headers work on mobile with adjusted properties */
