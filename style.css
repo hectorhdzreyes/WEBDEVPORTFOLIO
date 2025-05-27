@@ -109,6 +109,11 @@ nav ul li a {
     top: 261px;
 }
 
+/* This is the new span next to REYES. Hide it by default (for desktop). */
+.hero .name .reyes .mobile-reyes-copyright {
+    display: none; 
+}
+
 .content-wrapper {
     display: flex;
     justify-content: space-between;
@@ -2753,14 +2758,17 @@ nav ul li a {
     .hero .name .reyes { /* If you have a separate class for REYES */
         letter-spacing: 8.5px!important; /* Match main name */
     }
-    .hero .name::after { /* Copyright symbol styling */
-        content: "©"; 
-        font-size: 1.5rem; /* Adjusted for better inline appearance */
-        font-weight: normal; 
-        vertical-align: super; /* Position like a superscript */
-        margin-left: 0.25rem; /* Small space from the name */
-        display: inline; 
-        color: #1a1a1a; /* Match highlight color or main name color */
+    .hero .name::after { /* The original copyright symbol after the whole name block */
+        display: none !important; /* Hide this specific one on mobile */
+    }
+
+    .hero .name .reyes .mobile-reyes-copyright { /* The new span next to REYES */
+        display: inline;           /* Show it on mobile */
+        font-size: 1.2rem;         /* Mobile-appropriate size - adjusted from 1.5rem */
+        font-weight: normal;
+        vertical-align: super;
+        color: #1a1a1a;
+        margin-left: 0.1em;
     }
 
     /* Tagline - Target: "I help growing brands..." */
@@ -2783,7 +2791,7 @@ nav ul li a {
     }
     .hero .tagline {
         font-size: 1.5rem; /* Match target */
-        font-weight: normal; /* Normal weight */
+        font-weight: 500; /* Normal weight */
         line-height: 2.5; /* Match target */
         color: #333; /* Darker text */
         margin: 0 0 1.5rem 0; /* Space below tagline */
@@ -2941,3 +2949,17 @@ nav ul li a {
 
 }
 /* == MOBILE RESPONSIVE STYLES (END) == */
+
+/* Hide the new mobile-specific copyright span by default */
+.mobile-reyes-copyright {
+    display: none;
+}
+
+.mobile-reyes-copyright {
+    display: inline; /* Show it on mobile */
+    font-size: 1.5rem; /* Or adjust as needed */
+    font-weight: normal;
+    vertical-align: super; /* Position like a superscript */
+    color: #1a1a1a; /* Match highlight color or main name color */
+    margin-left: 0.1em; /* Adjust spacing as needed */
+}
