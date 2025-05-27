@@ -2769,7 +2769,7 @@ nav ul li a {
         vertical-align: super;
         color: #1a1a1a;
         margin-left: 0.1em;
-        margin-top: -10rem!important;
+        margin-bottom: -10rem!important;
     }
 
     /* Tagline - Target: "I help growing brands..." */
