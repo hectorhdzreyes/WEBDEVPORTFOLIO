@@ -125,51 +125,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // GSAP ScrollTrigger Horizontal Scroll for #works section
   const worksSection = document.querySelector('#works');
-  const panelsContainer = worksSection ? worksSection.querySelector('.panels-container') : null;
   
-  if (worksSection && panelsContainer) {
-      const panels = Array.from(panelsContainer.children).filter(child => child.matches('section.panel'));
-      const numPanels = panels.length;
+  if (worksSection) { // Only run if #works section exists
+      const panelsContainer = worksSection.querySelector('.panels-container');
+      if (panelsContainer) {
+          const panels = Array.from(panelsContainer.children).filter(child => child.matches('section.panel'));
+          const numPanels = panels.length;
 
-      if (numPanels > 0) {
-          // Set the width of the panels-container to hold all panels side-by-side
-          gsap.set(panelsContainer, { width: (numPanels * 100) + 'vw' });
+          if (numPanels > 0) {
+              gsap.set(panelsContainer, { width: (numPanels * 100) + 'vw' });
 
-          // Create a GSAP timeline for the horizontal scroll animation
-          let horizontalScrollTimeline = gsap.timeline();
-          window.worksHorizontalScrollTimeline = horizontalScrollTimeline; // Make it globally accessible
+              let horizontalScrollTimeline = gsap.timeline();
+              window.worksHorizontalScrollTimeline = horizontalScrollTimeline;
 
-          // Animate the panelsContainer's x position
-          // The total movement will be the width of all panels minus one viewport width,
-          // effectively showing each panel one by one.
-          horizontalScrollTimeline.to(panelsContainer, {
-              x: () => -(panelsContainer.scrollWidth - window.innerWidth),
-              ease: "none" // Linear ease for direct scrub control by ScrollTrigger
-          });
+              horizontalScrollTimeline.to(panelsContainer, {
+                  x: () => -(panelsContainer.scrollWidth - window.innerWidth),
+                  ease: "none"
+              });
 
-          // Create the ScrollTrigger instance
-          ScrollTrigger.create({
-              trigger: '#works',
-              pin: '#works', // Pin the #works section
-              scrub: 1, // Smooth scrubbing (1 second to catch up). Can be true for immediate.
-              start: "top top", // Start when the top of #works hits the top of the viewport
-              end: () => "+=" + (panelsContainer.scrollWidth - window.innerWidth),
-              animation: horizontalScrollTimeline,
-              invalidateOnRefresh: true, // Recalculate on resize/refresh
-              // anticipatePin: 1, // Optional: may help with pin jumping if observed
-              markers: false, // Optional: for debugging ScrollTrigger start/end points
-              onUpdate: self => {
-                console.log("[ScrollTrigger onUpdate] Progress:", self.progress); // DEBUG LOG
-                if (window.worksHelpers) {
-                  const currentScrollAmount = self.progress * (panelsContainer.scrollWidth - window.innerWidth);
-                  window.worksHelpers.updateNavigation(self.progress);
-                  window.worksHelpers.updateParallax(currentScrollAmount);
-                }
-              }
-          });
+              ScrollTrigger.create({
+                  trigger: '#works',
+                  pin: '#works',
+                  scrub: 1,
+                  start: "top top",
+                  end: () => "+=" + (panelsContainer.scrollWidth - window.innerWidth),
+                  animation: horizontalScrollTimeline,
+                  invalidateOnRefresh: true,
+                  markers: false,
+                  onUpdate: self => {
+                    console.log("[ScrollTrigger onUpdate] Progress:", self.progress); // DEBUG LOG
+                    if (window.worksHelpers) {
+                      const currentScrollAmount = self.progress * (panelsContainer.scrollWidth - window.innerWidth);
+                      window.worksHelpers.updateNavigation(self.progress);
+                      window.worksHelpers.updateParallax(currentScrollAmount);
+                    }
+                  }
+              });
+          }
+      } else {
+          console.warn('.panels-container not found within #works for horizontal scroll setup.');
       }
   } else {
-      console.warn('#works section or .panels-container not found for horizontal scroll setup using ScrollTrigger.');
+      console.log('#works section not found, skipping horizontal scroll setup.'); // Changed from warn to log
   }
 
   async function typeText(element, text) {

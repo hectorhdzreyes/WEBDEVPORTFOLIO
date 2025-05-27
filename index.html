@@ -663,14 +663,19 @@
             </a>
         </div>
     </footer>
-    <script>
-        (function () {
-            // Cal.com embed script
-            var cal = document.createElement('script'); cal.type = 'text/javascript'; cal.async = true;
-            cal.src = 'https://app.cal.com/embed/embed.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(cal, s);
-        })();
-    </script>
+    <!-- Cal element-click embed code begins -->
+    <script type="text/javascript">
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", "30min", {origin:"https://cal.com"});
+
+      // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
+      // `data-cal-link="hectorhdzreyes/30min"`
+      // data-cal-namespace="30min"
+      // `data-cal-config='{"layout":"month_view"}'`
+
+      Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+      </script>
+      <!-- Cal element-click embed code ends -->
     <!-- D3.js and TopoJSON for the globe -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://d3js.org/topojson.v3.min.js"></script>
@@ -723,15 +728,6 @@
                     e.preventDefault();
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
-            }
-        });
-    </script>
-    <script>
-        // Explicitly initialize Cal.com if it hasn't been already
-        // This is a fallback and might not be strictly necessary if embed.js works as expected.
-        document.addEventListener('DOMContentLoaded', function() {
-            if (typeof Cal !== "undefined" && Cal.instance === undefined) {
-                Cal("init");
             }
         });
     </script>
