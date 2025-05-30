@@ -129,40 +129,40 @@ document.addEventListener("DOMContentLoaded", () => {
   if (worksSection) { // Only run if #works section exists
       const panelsContainer = worksSection.querySelector('.panels-container');
       if (panelsContainer) {
-          const panels = Array.from(panelsContainer.children).filter(child => child.matches('section.panel'));
-          const numPanels = panels.length;
+      const panels = Array.from(panelsContainer.children).filter(child => child.matches('section.panel'));
+      const numPanels = panels.length;
 
-          if (numPanels > 0) {
-              gsap.set(panelsContainer, { width: (numPanels * 100) + 'vw' });
+      if (numPanels > 0) {
+          gsap.set(panelsContainer, { width: (numPanels * 100) + 'vw' });
 
-              let horizontalScrollTimeline = gsap.timeline();
+          let horizontalScrollTimeline = gsap.timeline();
               window.worksHorizontalScrollTimeline = horizontalScrollTimeline;
 
-              horizontalScrollTimeline.to(panelsContainer, {
-                  x: () => -(panelsContainer.scrollWidth - window.innerWidth),
+          horizontalScrollTimeline.to(panelsContainer, {
+              x: () => -(panelsContainer.scrollWidth - window.innerWidth),
                   ease: "none"
-              });
+          });
 
-              ScrollTrigger.create({
-                  trigger: '#works',
+          ScrollTrigger.create({
+              trigger: '#works',
                   pin: '#works',
                   scrub: 1,
                   start: "top top",
-                  end: () => "+=" + (panelsContainer.scrollWidth - window.innerWidth),
-                  animation: horizontalScrollTimeline,
+              end: () => "+=" + (panelsContainer.scrollWidth - window.innerWidth),
+              animation: horizontalScrollTimeline,
                   invalidateOnRefresh: true,
                   markers: false,
-                  onUpdate: self => {
-                    console.log("[ScrollTrigger onUpdate] Progress:", self.progress); // DEBUG LOG
-                    if (window.worksHelpers) {
-                      const currentScrollAmount = self.progress * (panelsContainer.scrollWidth - window.innerWidth);
-                      window.worksHelpers.updateNavigation(self.progress);
-                      window.worksHelpers.updateParallax(currentScrollAmount);
-                    }
-                  }
-              });
-          }
-      } else {
+              onUpdate: self => {
+                console.log("[ScrollTrigger onUpdate] Progress:", self.progress); // DEBUG LOG
+                if (window.worksHelpers) {
+                  const currentScrollAmount = self.progress * (panelsContainer.scrollWidth - window.innerWidth);
+                  window.worksHelpers.updateNavigation(self.progress);
+                  window.worksHelpers.updateParallax(currentScrollAmount);
+                }
+              }
+          });
+      }
+  } else {
           console.warn('.panels-container not found within #works for horizontal scroll setup.');
       }
   } else {
