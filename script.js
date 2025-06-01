@@ -8,11 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const directorElement = item.querySelector('.project-director');
       if (nameElement) {
           nameElement.dataset.originalText = nameElement.textContent.trim();
-          // nameElement.textContent = ''; // Temporarily disable clearing for debug
+          nameElement.textContent = ''; // Re-enable clearing for animation
       }
       if (directorElement) {
           directorElement.dataset.originalText = directorElement.textContent.trim();
-          // directorElement.textContent = ''; // Temporarily disable clearing for debug
+          directorElement.textContent = ''; // Re-enable clearing for animation
       }
   });
   // --- END PREPARATION ---
@@ -169,26 +169,47 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log('#works section not found, skipping horizontal scroll setup.'); // Changed from warn to log
   }
 
-  async function typeText(element, text) {
-    // element.textContent = ''; // Already handled by initial prep, or disabled for debug
+  async function typeText(element, text, speed = 50) {
+    if (!element || !text) return;
+    
+    element.textContent = '';
     element.classList.add('is-typing');
+    
     for (let i = 0; i < text.length; i++) {
-      if (nameElement && nameElement.dataset.originalText) {
-        // await typeText(nameElement, nameElement.dataset.originalText); // Temporarily disable typing
-        nameElement.textContent = nameElement.dataset.originalText; // Just show text directly
-      }
-      
-      if (directorElement && directorElement.dataset.originalText) {
-        // await new Promise(resolve => setTimeout(resolve, itemDelay)); 
-        // await typeText(directorElement, directorElement.dataset.originalText); // Temporarily disable typing
-        directorElement.textContent = directorElement.dataset.originalText; // Just show text directly
-      }
-      
-      // Ensure delay only if something was typed to prevent unnecessary long waits for empty items
-      /* if ((nameElement && nameElement.dataset.originalText) || (directorElement && directorElement.dataset.originalText)) {
-        await new Promise(resolve => setTimeout(resolve, nextItemDelay));
-      } */
+      element.textContent += text[i];
+      await new Promise(resolve => setTimeout(resolve, speed));
     }
+    
+    element.classList.remove('is-typing');
+  }
+
+  // Create ScrollTrigger for typing animation
+  const mainTitleSection = document.querySelector('.sticky-content-block.main-title-sticky-content');
+  if (mainTitleSection) {
+    ScrollTrigger.create({
+      trigger: mainTitleSection,
+      start: "top center",
+      once: true, // Only trigger once
+      onEnter: async () => {
+        for (const item of projectItemsForTyping) {
+          const nameElement = item.querySelector('.project-name');
+          const directorElement = item.querySelector('.project-director');
+          
+          if (nameElement && nameElement.dataset.originalText) {
+            await typeText(nameElement, nameElement.dataset.originalText);
+            // Small pause between name and director
+            await new Promise(resolve => setTimeout(resolve, 200));
+          }
+          
+          if (directorElement && directorElement.dataset.originalText) {
+            await typeText(directorElement, directorElement.dataset.originalText);
+          }
+          
+          // Pause before next item
+          await new Promise(resolve => setTimeout(resolve, 500));
+        }
+      }
+    });
   }
 
   // Optional: Trigger animation when the services section is in view

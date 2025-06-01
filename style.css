@@ -646,31 +646,48 @@ nav ul li a {
     width: 200%;
     max-width: 1000px;
     margin-left: 25rem; /* Align with services-subtitle */
-  }
+}
   
-  .projects-header,
-  .project-item {
+.projects-header,
+.project-item {
     display: flex;
     gap: 10em;
-    padding: .5em ;
+    padding: .5em;
     opacity: 0;
-  }
-  
-  .projects-header {
+    transition: opacity 0.5s ease;
+}
+
+.projects-header {
     margin-bottom: 0.5em;
     padding-bottom: 1em;
-  }
-  
-  .project-name,
-  .project-director {
+}
+
+.project-name,
+.project-director {
     flex: 2;
     text-transform: uppercase;
     font-family: monospace;
     font-size: 0.9rem;
-  }
-  
-  .project-item {
+    position: relative;
+}
+
+.project-name.is-typing::after,
+.project-director.is-typing::after {
+    content: '|';
+    position: absolute;
+    right: -4px;
+    top: 0;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.project-item {
     color: #4f4f4f;
+    opacity: 1; /* Make items visible by default */
 }
 
 /* Noise Animation Keyframes - Ensure this exists */
