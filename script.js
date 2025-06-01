@@ -185,35 +185,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Create ScrollTrigger for typing animation
   const mainTitleSection = document.querySelector('.sticky-content-block.main-title-sticky-content');
-  if (mainTitleSection) {
-    ScrollTrigger.create({
-      trigger: mainTitleSection,
-      start: "top center",
-      once: true, // Only trigger once
-      onEnter: async () => {
-        for (const item of projectItemsForTyping) {
-          const nameElement = item.querySelector('.project-name');
-          const directorElement = item.querySelector('.project-director');
-          
-          if (nameElement && nameElement.dataset.originalText) {
-            await typeText(nameElement, nameElement.dataset.originalText);
-            // Small pause between name and director
-            await new Promise(resolve => setTimeout(resolve, 200));
-          }
-          
-          if (directorElement && directorElement.dataset.originalText) {
-            await typeText(directorElement, directorElement.dataset.originalText);
-          }
-          
-          // Pause before next item
-          await new Promise(resolve => setTimeout(resolve, 500));
+if (mainTitleSection) {
+  ScrollTrigger.create({
+    trigger: mainTitleSection,
+    start: "top center",
+    once: true, // Only trigger once
+    onEnter: async () => {
+      for (const item of projectItemsForTyping) {
+        const nameElement = item.querySelector('.project-name');
+        const directorElement = item.querySelector('.project-director');
+        
+        // Type name and director simultaneously for speed
+        const promises = [];
+        
+        if (nameElement && nameElement.dataset.originalText) {
+          promises.push(typeText(nameElement, nameElement.dataset.originalText));
         }
+        
+        if (directorElement && directorElement.dataset.originalText) {
+          promises.push(typeText(directorElement, directorElement.dataset.originalText));
+        }
+        
+        // Wait for both to complete
+        await Promise.all(promises);
+        
+        // Much shorter pause before next item (was 500ms, now 150ms)
+        await new Promise(resolve => setTimeout(resolve, 150));
       }
-    });
-  }
+    }
+  });
+
 
   // Optional: Trigger animation when the services section is in view
   // ... existing code ...
-}); 
+
 
 // Removed old ScrollMagic related code that was here previously. 
