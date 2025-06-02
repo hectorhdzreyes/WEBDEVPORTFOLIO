@@ -288,36 +288,39 @@ nav ul li a {
     color: #f3f4f6; /* Services title color - GOOD contrast on dark background */
     flex-basis: auto; /* Adjust basis */
     text-align: left;
+    margin-left: -80rem!important;
 }
 
 .footer-copyright p {
-    margin: 0;
+    margin-left: -80rem!important;
 }
 
 .footer-local-time {
     text-align: center; /* Center the local time block */
     /* flex-grow: 1; */ /* Removed to allow space-between to work for 3 items */
-    /* margin-left: -10rem; */ /* Removed */
+    /* margin-left: -10rem; */ / Removed */
     /* margin-bottom: -5rem; */ /* Removed */
 }
 
 .footer-local-time p {
-    margin: 0;
+    margin-right: -5rem!important;
     font-size: 1rem; /* Adjusted size */
     color: #f3f4f6; /* Services title color - GOOD contrast on dark background */
 }
 
 .footer-local-time p:first-child {
     font-weight: 600;
+    bottom: 10rem!important;
     text-transform: uppercase;
     color: #f3f4f6; /* Services title color - GOOD contrast on dark background */
-    margin-bottom: 0.3rem;
 }
 
 .back-to-top-button {
     background-color: #f3f4f6; /* Light background - GOOD contrast for dark icon */
     color: #090909; /* Icon color for contrast with new background */
     width: 105px;
+    margin-left: 70rem!important;
+    
     height: 105px;
     border-radius: 50%;
     display: flex;
@@ -335,6 +338,7 @@ nav ul li a {
 }
 
 .back-to-top-button:hover {
+  
     background-color: #d1d5db; /* Slightly darker shade of #f3f4f6 for hover */
     transform: translateY(-3px);
 }
