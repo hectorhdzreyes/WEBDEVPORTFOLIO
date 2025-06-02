@@ -28,11 +28,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0rem;
+    padding: 1rem 1rem;
 }
 
 .header {
-    font-size: 1rem 2rem!important;
+    font-size: 2rem 3rem!important;
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -41,6 +41,8 @@ header {
 .headerLeft {
     position: relative;
     text-align: left;
+    font-size: 1rem!important;
+    
 }
 
 .headerLeft::after {

@@ -3,7 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hector Hernandez Reyes | Web Designer & Software Engineering Major</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="imagesportfolio/MyPortrait7.jpg">
+    <link rel="apple-touch-icon" href="imagesportfolio/MyPortrait7.jpg">
+    <link rel="shortcut icon" type="image/jpg" href="imagesportfolio/MyPortrait7.jpg">
+    
+    <title>Hector Hernandez Reyes | Web Developer & Software Engineering Major</title>
+    
+    <!-- Essential SEO Meta Tags -->
+    <meta name="description" content="Hector Hernandez Reyes - Web Developer & Software Engineering Major specializing in creating result-driven websites and applications. Expert in UI/UX design, responsive development, and SEO optimization.">
+    <meta name="keywords" content="hectorhdzreyes, Hector Hernandez Reyes, web developer, software engineering, UI/UX design, web design, SEO optimization, responsive design">
+    <meta name="author" content="Hector Hernandez Reyes">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Hector Hernandez Reyes | Web Designer & Software Engineer">
+    <meta property="og:description" content="Creating result-driven websites and applications that give personal brands and businesses an unfair advantage.">
+    <meta property="og:image" content="imagesportfolio/MyPortrait7.jpg">
+    <meta property="og:url" content="https://hectorhdzreyes.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hector Hernandez Reyes | Web Designer & Software Engineer">
+    <meta name="twitter:description" content="Creating result-driven websites and applications that give personal brands and businesses an unfair advantage.">
+    <meta name="twitter:image" content="imagesportfolio/MyPortrait7.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://hectorhdzreyes.com">
+    
+    <!-- Structured Data for Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Hector Hernandez Reyes",
+      "url": "https://hectorhdzreyes.com",
+      "image": "imagesportfolio/MyPortrait7.jpg",
+      "sameAs": [],
+      "jobTitle": "Web Developer & Software Engineering Major",
+      "description": "I create result driven websites and applications that give personal brands and businesses an unfair advantage.",
+      "knowsAbout": ["Web Development", "UI/UX Design", "SEO Optimization", "Software Engineering"],
+      "offers": {
+        "@type": "Offer",
+        "name": "Web Development Services",
+        "description": "Custom website development, UI/UX design, and SEO optimization services"
+      }
+    }
+    </script>
+    
+    <!-- Existing CSS and Script links -->
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -22,36 +71,36 @@
         </header>
     </div>
 
-    <section class="hero">
-        <div class="name">
+    <section class="hero" aria-label="Introduction">
+        <div class="name" aria-label="Name Display">
             H<span class="highlight1">E</span>CTOR <br>
             H<span class="highlight2">E</span>RNANDEZ <br>
             <div class="reyes">REYES<span class="mobile-reyes-copyright">©</span></div>
         </div>
-        <div class="nav">
+        <nav class="nav" aria-label="Main Navigation">
             <nav class="side-nav">
                 <ul>
-                    <li><a href="#services">Services</a></li>
-                    <!--<li><a href="#works">Works</a></li>-->
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#services" aria-label="View Services">Services</a></li>
+                    <li><a href="#about" aria-label="About Me">About</a></li>
+                    <li><a href="#contact" aria-label="Contact Information">Contact</a></li>
                 </ul>
             </nav>
-        </div>
+        </nav>
         <div class="content-wrapper">
             <div class="content-left">
-                <span class="arrow">↘</span>
-                <p class="tagline">
+                <span class="arrow" aria-hidden="true">↘</span>
+                <h2 class="tagline">
                     I create result driven websites and applications that give personal brands and businesses an unfair advantage. 
-                </p>
+                </h2>
                 <a href="#" 
                    class="cta-button" 
                    data-cal-link="hectorhdzreyes/30min" 
                    data-cal-namespace="30min" 
-                   data-cal-config='{"layout":"month_view"}'>BOOK A CALL <span class="arrow-icon">↗</span></a>
+                   data-cal-config='{"layout":"month_view"}'
+                   aria-label="Schedule a 30-minute consultation">BOOK A CALL <span class="arrow-icon" aria-hidden="true">↗</span></a>
             </div>
             <div class="content-center">
-                <img src="imagesportfolio/MyPortrait7.jpg" alt="Hector Hernandez Reyes Portrait" class="profile-image">
+                <img src="imagesportfolio/MyPortrait7.jpg" alt="Hector Hernandez Reyes - Professional Portrait" class="profile-image">
             </div>
             <div class="content-right">
                 <div class="availability">
@@ -59,7 +108,7 @@
                     <div class="availability-date">JUL '25</div>
                 </div>
             </div>
-        </div>
+        </div> 
     </section>
 
     <section id="services" class="page-section services-section-dark-bg">
@@ -72,54 +121,55 @@
                        class="cta-button-services-header" 
                        data-cal-link="hectorhdzreyes/30min" 
                        data-cal-namespace="30min" 
-                       data-cal-config='{"layout":"month_view"}'>BOOK A CALL <span class="arrow-icon">↗</span></a>
+                       data-cal-config='{"layout":"month_view"}'
+                       aria-label="Schedule a consultation">BOOK A CALL <span class="arrow-icon" aria-hidden="true">↗</span></a>
                 </h2>
             </div>
             <!-- Content for Main Title -->
             <div class="sticky-content-block main-title-sticky-content">
-                <p class="services-subtitle">(Services)</p>
-                <div class="projects-container">
+                <h3 class="services-subtitle">(Services)</h3>
+                <div class="projects-container" role="list">
                   <div class="projects-header">
                   </div>
 
-                  <div class="project-item">
-                    <div class="project-name">Mobile Responsiveness</div>
-                    <div class="project-director">Responsive Design</div>
+                  <div class="project-item" role="listitem">
+                    <h4 class="project-name">Mobile Responsiveness</h4>
+                    <div class="project-director">Creating fully responsive websites that work perfectly on all devices</div>
                   </div>
 
-                  <div class="project-item">
-                    <div class="project-name">eCommerce</div>
-                    <div class="project-director">Payment Gateways</div>
+                  <div class="project-item" role="listitem">
+                    <h4 class="project-name">eCommerce Solutions</h4>
+                    <div class="project-director">Secure payment gateways and complete online store setup</div>
                   </div>
 
-                  <div class="project-item">
-                    <div class="project-name">Motion & Animations</div>
-                    <div class="project-director">3D Development</div>
+                  <div class="project-item" role="listitem">
+                    <h4 class="project-name">Motion & Animations</h4>
+                    <div class="project-director">Engaging 3D and interactive web experiences</div>
                   </div>
 
-                  <div class="project-item">
-                    <div class="project-name">CMS Integration</div>
-                    <div class="project-director">Edit and manage website content</div>
+                  <div class="project-item" role="listitem">
+                    <h4 class="project-name">CMS Integration</h4>
+                    <div class="project-director">Easy content management systems for website updates</div>
                   </div>
 
-                  <div class="project-item">
-                    <div class="project-name">On-Page Optimization</div>
-                    <div class="project-director">SEO Audits & Analysis</div>
+                  <div class="project-item" role="listitem">
+                    <h4 class="project-name">SEO Optimization</h4>
+                    <div class="project-director">Comprehensive SEO audits and implementation</div>
                   </div>
 
-                  <div class="project-item">
-                    <div class="project-name">Maintenance</div>
-                    <div class="project-director">Updates & Backups</div>
+                  <div class="project-item" role="listitem">
+                    <h4 class="project-name">Website Maintenance</h4>
+                    <div class="project-director">Regular updates, backups, and security monitoring</div>
                   </div>
 
-                  <div class="project-item">
-                    <div class="project-name">Domain & Hosting</div>
-                    <div class="project-director">SSL Certificates</div>
+                  <div class="project-item" role="listitem">
+                    <h4 class="project-name">Domain & Hosting</h4>
+                    <div class="project-director">Complete setup with SSL security</div>
                   </div>
 
-                  <div class="project-item">
-                    <div class="project-name">UI/UX Design</div>
-                    <div class="project-director">User Experience</div>
+                  <div class="project-item" role="listitem">
+                    <h4 class="project-name">UI/UX Design</h4>
+                    <div class="project-director">User-centered design and experience optimization</div>
                   </div>
                 </div>
             </div>
