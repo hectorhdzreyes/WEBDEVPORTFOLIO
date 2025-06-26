@@ -2017,8 +2017,8 @@ nav ul li a {
 }
 
 #about .blog-article img {
-  height: 200px!important;
-  max-height: 20vh;
+  height: 170px!important;
+  max-height: none;
   width: 100%;
   object-fit: cover;
   filter: grayscale(1);
