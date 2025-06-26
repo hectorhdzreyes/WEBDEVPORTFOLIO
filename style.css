@@ -1903,17 +1903,17 @@ nav ul li a {
 }
 
 #about .blog-menu {
-  font-size: 20px;
+  font-size: 35px!important;
   text-decoration: none;
-  color: #161419; /* $subtitle-color */
+  color: #1d1d1d; /* $subtitle-color */
   display: flex;
   letter-spacing: -0.5px;
   align-items: center;
 }
 
 #about .small-title1 {
-  font-size: 28px;
-  color: #161419; /* $subtitle-color */
+  font-size: 25px!important;
+  color: #121213; /* $subtitle-color */
   font-weight: 450;
 }
 

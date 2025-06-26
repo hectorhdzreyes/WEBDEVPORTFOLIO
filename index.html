@@ -7,7 +7,6 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="imagesportfolio/apple-touch-icon.png">
     
     <!-- Essential SEO Meta Tags -->
@@ -34,32 +33,130 @@
     
     <!-- Structured Data for Rich Snippets -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Hector Hernandez Reyes",
-      "url": "https://hectorhdzreyes.com",
-      "image": "imagesportfolio/MyPortrait7.jpg",
-      "sameAs": [],
-      "jobTitle": "Web Developer & Software Engineering Major",
-      "description": "I create result driven websites and applications that give personal brands and businesses an unfair advantage.",
-      "knowsAbout": ["Web Development", "UI/UX Design", "SEO Optimization", "Software Engineering"],
-      "offers": {
-        "@type": "Offer",
-        "name": "Web Development Services",
-        "description": "Custom website development, UI/UX design, and SEO optimization services"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Hector Hernandez Reyes",
+        "url": "https://hectorhdzreyes.com",
+        "image": "imagesportfolio/MyPortrait7.jpg",
+        "sameAs": [
+          // Add your social media profile URLs here, e.g.:
+          // "https://www.linkedin.com/in/yourprofile/",
+          // "https://github.com/yourusername/"
+        ],
+        "jobTitle": "Web Developer & Software Engineering Major",
+        "description": "I create result driven websites and applications that give personal brands and businesses an unfair advantage.",
+        "knowsAbout": ["Web Development", "UI/UX Design", "SEO Optimization", "Software Engineering", "Responsive Design", "eCommerce Solutions", "Motion Design", "CMS Integration", "Website Maintenance"],
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Hector Hernandez Reyes Freelance"
+        },
+        "alumniOf": [
+            // Add any relevant educational institutions, e.g.:
+            // {
+            // "@type": "CollegeOrUniversity",
+            // "name": "Your University Name"
+            // }
+        ],
+        "gender": "Male", // Optional: Add if you are comfortable
+        "nationality": "Mexican" // Optional: Add if you are comfortable
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://hectorhdzreyes.com",
+        "name": "Hector Hernandez Reyes Portfolio",
+        "publisher": {
+          "@type": "Person",
+          "name": "Hector Hernandez Reyes"
+        },
+        "inLanguage": "en-US",
+        "description": "Portfolio website for Hector Hernandez Reyes, a web developer and software engineering major."
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Web Development",
+        "provider": {
+          "@type": "Person",
+          "name": "Hector Hernandez Reyes"
+        },
+        "name": "Web Development",
+        "description": "Custom-coded websites meticulously crafted to reflect your unique identity, delivering seamless experiences with a focus on animation.",
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Worldwide"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Web Development Services",
+            "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "CMS Integration" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Motion & Animations" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "3D Development" } }
+            ]
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Web Design",
+        "provider": {
+          "@type": "Person",
+          "name": "Hector Hernandez Reyes"
+        },
+        "name": "Web Design",
+        "description": "Stunning, high-converting sites that align with your business goals, helping you stand out and scale effectively.",
+        "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": "Worldwide"
+          },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Web Design Services",
+            "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Responsive Design" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wireframing" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UX Writing" } }
+            ]
+        }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "SEO",
+        "provider": {
+          "@type": "Person",
+          "name": "Hector Hernandez Reyes"
+        },
+        "name": "SEO Optimization",
+        "description": "Optimize your online presence to elevate your visibility in search results, helping your business attract the right audience.",
+        "areaServed": {
+            "@type": "AdministrativeArea",
+            "name": "Worldwide"
+          },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "SEO Services",
+            "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Technical SEO" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "On-Page Optimization" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO Audits & Analysis" } }
+            ]
+        }
       }
-    }
+    ]
     </script>
     
     <!-- Existing CSS and Script links -->
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js" defer></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -72,11 +169,11 @@
     </div>
 
     <section class="hero" aria-label="Introduction">
-        <div class="name" aria-label="Name Display">
+        <h1 class="name" aria-label="Name Display">
             H<span class="highlight1">E</span>CTOR <br>
             H<span class="highlight2">E</span>RNANDEZ <br>
             <div class="reyes">REYES<span class="mobile-reyes-copyright">©</span></div>
-        </div>
+        </h1>
         <nav class="nav" aria-label="Main Navigation">
             <nav class="side-nav">
                 <ul>
@@ -105,7 +202,7 @@
             <div class="content-right">
                 <div class="availability">
                     <p class="availability-text">AVAILABLE FOR FREELANCE WORK</p>
-                    <div class="availability-date">JUL '25</div>
+                    <div class="availability-date">SEP '25</div>
                 </div>
             </div>
         </div> 
@@ -504,7 +601,7 @@
  <div class="blog-header blog-is-sticky">
   <div class="blog-article header-article">
    <div class="blog-big__title"></div>
-   <div class="blog-menu rounded small-title">(about me)</div>
+   <h2 class="blog-menu rounded small-title">(About Me)</h2>
    <div class="blog-menu rounded small-title1">WEB DEVELOPER</div>
    <div class="blog-menu rounded small-title1">DESIGNER</div>
   <div class="blog-menu rounded small-title1">SOFTWARE ENGINEERING MAJOR</div>
@@ -522,7 +619,7 @@
        <div class="blog-menu small-title date">Hernandez Reyes</div>
      </div>
      <div class="blog-article">
-       <img src="imagesportfolio/MyPortrait5.jpg" alt="">
+       <img src="imagesportfolio/MyPortrait5.jpg" alt="Hector Hernandez Reyes - Portrait">
        <div class="blog-detail">
          <span></span>
          <span>05/2025</span>
@@ -541,11 +638,11 @@
    <div class="blog-header-container">
      <div class="blog-header">
        <div class="blog-article header-article">
-         <div class="blog-big__title">Financial Services</div>
+         <h3 class="blog-big__title">Financial Services</h3>
          <div class="blog-menu small-title date">12.06.2021</div>
        </div>
        <div class="blog-article">
-         <img src="https://images.unsplash.com/photo-1529255484355-cb73c33c04bb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTh8fGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+         <img src="https://images.unsplash.com/photo-1529255484355-cb73c33c04bb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTh8fGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Abstract black and white texture">
          <div class="blog-detail">
            <span>By Tom Hiddleston</span>
            <span>5 Min Read</span>
@@ -562,11 +659,11 @@
      </div>
      <div class="blog-header">
        <div class="blog-article header-article">
-         <div class="blog-big__title">Mobile Detailing</div>
+         <h3 class="blog-big__title">Mobile Detailing</h3>
          <div class="blog-menu small-title date">12.06.2021</div>
        </div>
        <div class="blog-article">
-         <img src="https://images.unsplash.com/photo-1616248249518-b16013cd4e42?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTkzfHxibGFjayUyMGFuZCUyMHdoaXRlfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+         <img src="https://images.unsplash.com/photo-1616248249518-b16013cd4e42?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTkzfHxibGFjayUyMGFuZCUyMHdoaXRlfGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Abstract monochrome pattern">
          <div class="blog-detail">
            <span>By Scarlett Witch</span>
            <span>5 Min Read</span>
@@ -583,11 +680,11 @@
      </div>
      <div class="blog-header">
        <div class="blog-article header-article">
-         <div class="blog-big__title">Landscape Maintenance</div>
+         <h3 class="blog-big__title">Landscape Maintenance</h3>
          <div class="blog-menu small-title date">12.06.2021</div>
        </div>
        <div class="blog-article">
-         <img src="https://images.unsplash.com/photo-1529255484355-cb73c33c04bb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTh8fGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+         <img src="https://images.unsplash.com/photo-1529255484355-cb73c33c04bb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OTh8fGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MHwwfDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Abstract black and white texture">
          <div class="blog-detail">
            <span>By Tom Hiddleston</span>
            <span>5 Min Read</span>
@@ -606,9 +703,8 @@
  </div>
  <div class="blog-part right-blog">
   <marquee width="100%" direction="left">
-   <span>Available for July 2025</span>
-   <span>Available for July 2025</span>
-   <span>Available for July 2025</span>
+   <span>Available for September 2025</span>
+   <span>Available for September 2025</span>
   </marquee>
   <div class="blog-right-title-container">
    <div class="blog-right-title">
@@ -658,7 +754,7 @@
                     </div>
                     <div class="availability-text-container">
                         <p>Working Globally</p>
-                        <p>Available Jul '25</p>
+                        <p>Available Sep '25</p>
                     </div>
                 </div>
             </div>
